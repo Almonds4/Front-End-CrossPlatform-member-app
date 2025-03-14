@@ -13,26 +13,22 @@
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <div class="logo">
-                <img src="images/iiaems-logo.png" alt="IIAEMS Logo" class="img-fluid">
-            </div>
+            <a class="navbar-brand" href="#">IIAEMS</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="programs">Programs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#programs">Programs</a></li>
                     <li class="nav-item"><a class="nav-link" href="resource.html">Resources</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="contact.html">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact.html">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="signup.html">Sign Up</a></li>
+
                 </ul>
-                <div class="auth-buttons">
-                    <a href="#" class="btn login-btn">Login</a>
-                    <a href="#" class="btn signup-btn">Sign up</a>
-                </div>
             </div>
         </div>
     </nav>
@@ -44,26 +40,6 @@
                 <div class="col-md-10 text-center">
                     <h1 class="mb-3">Contact Us</h1>
                     <p class="subtitle mb-5">The quickest way to get in touch with us is by using the contact information below</p>
-                </div>
-            </div>
-
-            <!-- Contact Tabs -->
-            <div class="row justify-content-center">
-                <div class="col-md-10">
-                    <ul class="nav nav-tabs contact-tabs" id="contactTabs" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="learners-tab" data-bs-toggle="tab" data-bs-target="#learners" type="button" role="tab" aria-controls="learners" aria-selected="true">Learners</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="instructors-tab" data-bs-toggle="tab" data-bs-target="#instructors" type="button" role="tab" aria-controls="instructors" aria-selected="false">Instructors</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="partners-tab" data-bs-toggle="tab" data-bs-target="#partners" type="button" role="tab" aria-controls="partners" aria-selected="false">Partners & Business</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="press-tab" data-bs-toggle="tab" data-bs-target="#press" type="button" role="tab" aria-controls="press" aria-selected="false">Press</button>
-                        </li>
-                    </ul>
                 </div>
             </div>
 
@@ -81,161 +57,11 @@
                                         <p><strong>Phone:</strong> +1 (555) 123-4567</p>
                                         <p><strong>Hours:</strong> Monday-Friday, 9 AM - 5 PM EST</p>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="contact-form">
-                                            <h3>Send us a message</h3>
-                                            <form>
-                                                <div class="mb-3">
-                                                    <input type="text" class="form-control" placeholder="Your Name" required>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <input type="email" class="form-control" placeholder="Your Email" required>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <select class="form-select" required>
-                                                        <option value="" disabled selected>Select Topic</option>
-                                                        <option value="course-inquiry">Course Inquiry</option>
-                                                        <option value="technical-support">Technical Support</option>
-                                                        <option value="billing">Billing Question</option>
-                                                        <option value="other">Other</option>
-                                                    </select>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <textarea class="form-control" placeholder="Your Message" rows="5" required></textarea>
-                                                </div>
-                                                <button type="submit" class="btn btn-primary">Submit</button>
-                                            </form>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Instructors Tab -->
-                        <div class="tab-pane fade" id="instructors" role="tabpanel" aria-labelledby="instructors-tab">
-                            <div class="contact-info py-5">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <h3>Contact Information</h3>
-                                        <p><strong>Email:</strong> instructors@iiaems.edu</p>
-                                        <p><strong>Phone:</strong> +1 (555) 234-5678</p>
-                                        <p><strong>Hours:</strong> Monday-Friday, 9 AM - 5 PM EST</p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="contact-form">
-                                            <h3>Send us a message</h3>
-                                            <form>
-                                                <div class="mb-3">
-                                                    <input type="text" class="form-control" placeholder="Your Name" required>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <input type="email" class="form-control" placeholder="Your Email" required>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <select class="form-select" required>
-                                                        <option value="" disabled selected>Select Topic</option>
-                                                        <option value="teaching">Teaching Opportunities</option>
-                                                        <option value="technical-support">Technical Support</option>
-                                                        <option value="payment">Payment Issues</option>
-                                                        <option value="other">Other</option>
-                                                    </select>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <textarea class="form-control" placeholder="Your Message" rows="5" required></textarea>
-                                                </div>
-                                                <button type="submit" class="btn btn-primary">Submit</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Partners Tab -->
-                        <div class="tab-pane fade" id="partners" role="tabpanel" aria-labelledby="partners-tab">
-                            <div class="contact-info py-5">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <h3>Contact Information</h3>
-                                        <p><strong>Email:</strong> partners@iiaems.edu</p>
-                                        <p><strong>Phone:</strong> +1 (555) 345-6789</p>
-                                        <p><strong>Hours:</strong> Monday-Friday, 9 AM - 5 PM EST</p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="contact-form">
-                                            <h3>Send us a message</h3>
-                                            <form>
-                                                <div class="mb-3">
-                                                    <input type="text" class="form-control" placeholder="Your Name" required>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <input type="email" class="form-control" placeholder="Your Email" required>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <input type="text" class="form-control" placeholder="Company/Organization" required>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <select class="form-select" required>
-                                                        <option value="" disabled selected>Partnership Type</option>
-                                                        <option value="academic">Academic Partnership</option>
-                                                        <option value="corporate">Corporate Partnership</option>
-                                                        <option value="sponsorship">Sponsorship</option>
-                                                        <option value="other">Other</option>
-                                                    </select>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <textarea class="form-control" placeholder="Your Message" rows="5" required></textarea>
-                                                </div>
-                                                <button type="submit" class="btn btn-primary">Submit</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Press Tab -->
-                        <div class="tab-pane fade" id="press" role="tabpanel" aria-labelledby="press-tab">
-                            <div class="contact-info py-5">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <h3>Contact Information</h3>
-                                        <p><strong>Email:</strong> press@iiaems.edu</p>
-                                        <p><strong>Phone:</strong> +1 (555) 456-7890</p>
-                                        <p><strong>Hours:</strong> Monday-Friday, 9 AM - 5 PM EST</p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="contact-form">
-                                            <h3>Send us a message</h3>
-                                            <form>
-                                                <div class="mb-3">
-                                                    <input type="text" class="form-control" placeholder="Your Name" required>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <input type="email" class="form-control" placeholder="Your Email" required>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <input type="text" class="form-control" placeholder="Media Outlet" required>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <select class="form-select" required>
-                                                        <option value="" disabled selected>Inquiry Type</option>
-                                                        <option value="interview">Interview Request</option>
-                                                        <option value="press-release">Press Release</option>
-                                                        <option value="media-kit">Media Kit</option>
-                                                        <option value="other">Other</option>
-                                                    </select>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <textarea class="form-control" placeholder="Your Message" rows="5" required></textarea>
-                                                </div>
-                                                <button type="submit" class="btn btn-primary">Submit</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
                         <!-- FAQ Section -->
                      <section class="faq-section text-center">
@@ -268,7 +94,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <h4>IIAEMS</h4>
-                    <p>Innovative Institute for Advanced Education Management Systems</p>
+                    <p>Institute for...</p>
                 </div>
                 <div class="col-md-4">
                     <h4>Quick Links</h4>
