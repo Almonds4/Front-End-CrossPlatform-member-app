@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Listings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/lib/index.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .filters {
+            width: 250px;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .filter-section {
+            margin-bottom: 20px;
+        }
+
+        .filter-section h4 {
+            font-weight: 600;
+        }
+
+        .filter-section input,
+        .filter-section select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 8px;
+            border-radius: 5px;
+            border: 1px solid #d1d1d1;
+        }
+
+        .courses {
+            flex: 1;
+            margin-left: 20px;
+        }
+
+        .course-card {
+            display: flex;
+            justify-content: space-between;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+
+        .course-image {
+            width: 100px;
+            height: 100px;
+            background-color: #eaeaea;
+            border-radius: 5px;
+        }
+
+        .course-details {
+            flex: 1;
+            margin-left: 20px;
+        }
+
+        .course-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .course-instructor {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .course-description {
+            font-size: 14px;
+            margin-top: 8px;
+            color: #777;
+        }
+
+        .course-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .rating {
+            display: flex;
+            gap: 5px;
+        }
+
+        .rating span {
+            font-size: 16px;
+            color: #ffd700;
+        }
+
+        .price {
+            font-weight: 600;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .pagination button {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .pagination button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Filters Section -->
+        <div class="filters">
+            <div class="filter-section">
+                <h4>Filter</h4>
+                <label for="rating">Rating</label>
+                <select id="rating">
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+            </div>
+
+            <div class="filter-section">
+                <h4>Language</h4>
+                <input type="radio" id="english" name="language" value="english" checked> English
+                <br>
+                <input type="radio" id="arabic" name="language" value="arabic"> Arabic
+            </div>
+
+            <div class="filter-section">
+                <h4>Topic</h4>
+                <input type="checkbox" id="computer-science" checked> Computer Science
+                <br>
+                <input type="checkbox" id="business"> Business
+            </div>
+
+            <div class="filter-section">
+                <h4>Price</h4>
+                <input type="range" id="price" min="0" max="100" value="30">
+            </div>
+        </div>
+
+        <!-- Course Listings -->
+        <div class="courses">
+            <div class="course-card">
+                <div class="course-image"></div>
+                <div class="course-details">
+                    <div class="course-title">Title of the Course</div>
+                    <div class="course-instructor">Instructor Name</div>
+                    <div class="course-description">Description goes here. unchanged. It was popularized in the 1960s with the release of Letraset sheets containing Lorem Ipsum passa.</div>
+                    <div class="course-footer">
+                        <div class="rating">
+                            <span>&#9733;</span>
+                            <span>&#9733;</span>
+                            <span>&#9733;</span>
+                            <span>&#9733;</span>
+                            <span>&#9734;</span>
+                        </div>
+                        <div class="price">CA $16.49</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-card">
+                <div class="course-image"></div>
+                <div class="course-details">
+                    <div class="course-title">Title of the Course</div>
+                    <div class="course-instructor">Instructor Name</div>
+                    <div class="course-description">Description goes here. unchanged. It was popularized in the 1960s with the release of Letraset sheets containing Lorem Ipsum passa.</div>
+                    <div class="course-footer">
+                        <div class="rating">
+                            <span>&#9733;</span>
+                            <span>&#9733;</span>
+                            <span>&#9733;</span>
+                            <span>&#9733;</span>
+                            <span>&#9734;</span>
+                        </div>
+                        <div class="price">CA $16.49</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button>1</button>
+                <button>2</button>
+                <button>3</button>
+                <button>...</button>
+                <button>36</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
