@@ -1,123 +1,443 @@
+/* Base styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
 }
-/* Header */
-.header {
-    background-color: #003366; /* Dark Blue */
-    padding: 20px 0;
-}
-.header .logo img {
-    max-height: 60px;
-}
-.auth-buttons .btn {
-    margin-left: 10px;
-}
-.auth-buttons .login-btn {
-    background-color: #d4e9e2; /* Light Green */
-    border: none;
-    color: #003366;
-}
-.auth-buttons .signup-btn {
-    background-color: #ffffff; /* White */
-    border: 2px solid #003366;
-    color: #003366;
-}
-/* Navbar */
+
+/* Header & Navbar */
 .navbar {
-    background-color: #003366; /* Dark Blue */
+    background-color: #1e4b87 !important;
+    padding: 15px 0;
 }
-.navbar-nav .nav-link {
-    color: #ffffff !important; /* White text for navbar links */
+
+.navbar-brand img {
+    height: 35px;
 }
-.navbar-nav .nav-link.active {
-    color: #d4e9e2 !important; /* Light Green for active link */
+
+.navbar-light .navbar-nav .nav-link {
+    color: white;
+    margin: 0 10px;
+    transition: opacity 0.3s;
 }
-/* Main Content */
-.main-content {
-    background-color: #ffffff; /* White */
-    padding: 40px 0;
+
+.navbar-light .navbar-nav .nav-link:hover {
+    opacity: 0.8;
 }
-h1 {
-    color: #003366; /* Dark Blue */
+
+.navbar-toggler {
+    background-color: #a3d4bd;
 }
-p.subtitle {
-    color: #666666; /* Gray subtitle text */
+
+/* Login & Signup Buttons */
+.login-buttons {
+    display: flex;
+    gap: 10px;
 }
-.nav-tabs .nav-link.active {
-    background-color: #d4e9e2; /* Light Green */
-    color: #003366 !important; /* Dark Blue text for active tab */
+
+.login-buttons a {
+    padding: 5px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.3s;
+    display: inline-block;
 }
+
+.login-btn {
+    background-color: #a3d4bd;
+    color: black;
+}
+
+.login-btn:hover {
+    background-color: #8bc3aa;
+    color: black;
+}
+
+.signup-btn {
+    background-color: #1e4b87;
+    border: 1px solid white;
+    color: white;
+}
+
+.signup-btn:hover {
+    background-color: white;
+    color: #1e4b87;
+}
+
+/* Hero Section */
+.hero-section {
+    background-color: #f8f9fa;
+    padding: 60px 0;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.hero-section h1 {
+    color: #1e4b87;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.hero-section p {
+    margin-bottom: 30px;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Buttons */
+.btn-explore {
+    background-color: #4caf93;
+    color: white;
+    padding: 8px 25px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-explore:hover {
+    background-color: #3d9a81;
+}
+
+.btn-explore-sm {
+    background-color: white;
+    color: #1e4b87;
+    border: none;
+    padding: 5px 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-explore-sm:hover {
+    background-color: #f0f0f0;
+}
+
+.btn-learn-more {
+    background-color: #d9b384;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-learn-more:hover {
+    background-color: #c9a06f;
+}
+
+/* Section Styling */
+.section-title {
+    color: #1e4b87;
+    text-align: center;
+    margin: 50px 0 30px;
+    font-weight: bold;
+}
+
+.about-section {
+    padding: 20px 0 50px;
+    background-color: white;
+}
+
+.about-section p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Team Section */
+.team-member {
+    margin-bottom: 30px;
+    transition: transform 0.3s;
+}
+
+.team-member:hover {
+    transform: translateY(-5px);
+}
+
+.team-member img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+/* Featured Courses */
+.featured-courses {
+    padding: 20px 0 50px;
+}
+
+.course-card {
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+    height: 100%;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+}
+
+.course-image {
+    height: 150px;
+    background-color: #8ecce0;
+    position: relative;
+}
+
+.course-category {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #4caf93;
+    color: white;
+    padding: 2px 10px;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+.course-details {
+    padding: 15px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 150px);
+}
+
+.course-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #1e4b87;
+}
+
+.course-description {
+    flex-grow: 1;
+    margin-bottom: 15px;
+}
+
+.course-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-top: auto;
+}
+
+.view-all-courses {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* Resources Section */
+.resources-section {
+    padding: 20px 0 50px;
+}
+
+.resource-card {
+    background-color: #c5e6d8;
+    padding: 25px;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s;
+}
+
+.resource-card:hover {
+    transform: scale(1.03);
+}
+
+.resource-icon {
+    width: 60px;
+    height: 60px;
+    background-color: grey;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.resource-title {
+    font-weight: bold;
+    color: #1e4b87;
+    margin-bottom: 10px;
+}
+
+/* Education Programs */
+.education-programs {
+    padding: 20px 0 50px;
+}
+
+.program-tabs {
+    display: flex;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.program-tab {
+    padding: 8px 20px;
+    background-color: #1e4b87;
+    color: white;
+    border: none;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.program-tab:hover {
+    background-color: #163c6c;
+}
+
+.program-tab.active {
+    background-color: #e5e5e5;
+    color: #1e4b87;
+}
+
+.program-content {
+    background-color: #e5e5e5;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.program-content h5 {
+    color: #1e4b87;
+    margin-bottom: 15px;
+}
+
+.program-content ul {
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.program-content li {
+    margin-bottom: 5px;
+}
+
+/* Reviews */
+.review-card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    height: 100%;
+    background-color: white;
+}
+
+.blockquote-footer {
+    background-color: white;  
+}
+
+/* Contact Section */
+.contact-section {
+    background-color: #8ecce0;
+    padding: 30px 0;
+    text-align: center;
+    color: #1e4b87;
+}
+
 .contact-info {
-    background-color: #f8f9fa; /* Light Gray */
+    background-color: #f8f9fa;
     padding: 30px;
     border-radius: 5px;
 }
-.contact-form {
-    background-color: #ffffff; /* White */
-    padding: 30px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-button.btn-primary {
-    background-color: #003366; /* Dark Blue */
-    border-color: #003366;
-}
-button.btn-primary:hover {
-    background-color: #002244; /* Slightly darker blue on hover */
-}
+
 /* FAQ Section */
 .faq-section {
-    background-color: #d4e9e2; /* Light Green */
+    background-color: #d4e9e2;
     padding: 40px 20px;
-    color: #003366; /* Dark Blue text */
+    color: #003366;
 }
+
 h2.faq-title {
     margin-bottom: 30px;
     font-size: 24px;
     font-weight: bold;
 }
+
+/* Footer */
 footer {
-    background-color: #003366; /* Dark Blue */
-    color: #ffffff; /* White text for footer */
-    padding-top: 20px;
+    background-color: #1e4b87;
+    color: white;
+    padding: 30px 0;
+    font-size: 14px;
 }
 
-    .hero-section {
-        background-color: #f8f9fa;
-        padding: 80px 0;
-        margin-bottom: 30px;
-    }
-    .mission-card {
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        transition: transform 0.3s;
-        height: 100%;
-    }
-    .mission-card:hover {
-        transform: translateY(-5px);
-    }
-    .team-member {
-        margin-bottom: 30px;
-        transition: transform 0.3s;
-    }
-    .team-member:hover {
-        transform: translateY(-5px);
-    }
-    .team-member img {
-        width: 150px;
-        height: 150px;
-        object-fit: cover;
-    }
-    .review-card {
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        padding: 20px;
-        height: 100%;
-        background-color: white;
-    }
+footer h6 {
+    font-weight: bold;
+    margin-bottom: 15px;
+}
 
-    .blockquote-footer {
-        background-color: white;  
+footer ul {
+    padding: 0;
+}
+
+footer li {
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+
+footer li:hover {
+    text-decoration: underline;
+}
+
+.social-icons {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.social-icon {
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.social-icon:hover {
+    transform: scale(1.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+    .login-buttons {
+        margin-top: 15px;
+        justify-content: center;
     }
+    .navbar-light .navbar-nav .nav-link {
+        text-align: center;
+        margin: 5px 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .hero-section {
+        padding: 40px 0;
+    }
+    .hero-section h1 {
+        font-size: 1.8rem;
+    }
+    .hero-section p {
+        max-width: 95%;
+    }
+    .program-tab {
+        flex: 1 0 auto;
+        text-align: center;
+    }
+    .resource-card {
+        height: auto;
+        padding: 20px 15px;
+    }
+    footer .col-md-4 {
+        margin-bottom: 30px;
+    }
+}
