@@ -1,0 +1,100 @@
+#dashboard > .container > * {
+  margin: auto;
+  width: fit-content;
+  height: fit-content;
+  text-align: center;
+}
+
+#dashboard {
+  background-color: #b5dccb;
+}
+
+#dashboard > .container > h2 {
+  color: #204a87;
+}
+
+#my-courses {
+  background-color: #d9d9d9;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.course-card {
+  width: 250px;
+  height: 250px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  min-height: fit-content;
+  font-size: 16px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+  transition: 0.3s ease-in-out;
+  border-radius: 24px;
+  padding: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  margin: auto;
+  background-color: #fef9f0;
+}
+
+.course-card div {
+  border-radius: 15px;
+}
+
+.course-card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.7);
+  transform: scale(1.02);
+}
+
+.card-top {
+  width: 98%;
+  height: 40%;
+  background-image: url(member-portal-images/CS-stock-photo.jpg);
+  background-size: cover;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  padding: 0%;
+  margin: auto;
+}
+
+.card-top p {
+  width: 100%;
+  background-color: #20498771;
+  height: fit-content;
+  padding: 3px;
+  border-radius: 15px 15px 0px 0px;
+}
+
+.card-bottom {
+  padding: 7px;
+  min-height: fit-content;
+}
+
+.card-bottom ul {
+  list-style: none;
+}
+
+#recommended-courses h2 {
+  margin: auto;
+  padding: 10px;
+  width: fit-content;
+  height: fit-content;
+}
+
+#carousel {
+  max-width: 800px;
+  margin: auto;
+}
+.carousel-item img {
+  height: auto;
+  max-height: 400px;
+}
+
+.carousel-item img {
+  border-radius: 15px;
+}
