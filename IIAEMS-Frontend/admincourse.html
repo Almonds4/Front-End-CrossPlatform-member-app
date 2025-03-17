@@ -1,0 +1,118 @@
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>admin_courses</title>
+    <link rel="stylesheet" href="personal_admincourse.css">
+</head>
+
+<body>
+
+    <!-- For the main header, logo, and logout button -->
+
+    <header id="main_header">  
+        
+        <span id="IIAEM_Logo">
+            <img src = “IIAEM URL” height = "35px" width = "150px" alt = "IIAEM Logo"> <!-- URL REQUIRED  -->
+        </span>
+
+        <span id="logout_button">
+        <a href="link_to_main_page"> <!-- HTML FILE NAME REQUIRED -->
+            <button><span>Logout</span></button>
+        </a>
+        </span>
+
+    </header>
+    
+    <!-- For the navigation bar: search, courses, resources, mssgs -->
+
+    <nav>
+        <ul class="navbar">
+            <li><a href="admin_search.html">Search</a></li>
+            <li><a href="admin_courses.html">Courses</a></li>
+            <li><a href="admin_resources.html">Resources</a></li>
+            <li><a href="admin_messages.html">Messages</a></li>
+        </ul>
+    </nav>
+
+    <!-- For the Courses Page: -->
+    
+    <br>
+
+    <!-- Search Bar & New Course -->
+    <div id="search_add_course">
+    
+        <div id="search">
+            <form action="COURSESHINGY" method="GET">
+            <label for="course_search" style="font-size:1.5em;">Search Courses: </label>
+            <input type ="text" id="course_search" name="course_search" placeholder="&#128270 Search Course">   
+            </form>
+        </div>
+
+        <div id="new_course">
+            <h2 style="font-weight: normal;">New Course <a href ="admin_course_edit">&oplus;</a></h2>
+        </div>
+    </div>
+
+    <!-- Filters -->
+    <br>
+    <div id="filters">
+        
+        <br>
+
+        <ul id="filter_options">
+            <li id="filter_header">
+                <h3>Filters</h3><br>
+            </li>
+
+            <li id="filter_header">Topic</li>
+            <li>
+                <input type="checkbox" id="Science">
+                <label for="Science">Science</label>
+            </li>
+            <li>
+                <input type="checkbox" id="Technology">
+                <label for="Technology">Technology</label>
+            </li>
+            <li>
+                <input type="checkbox" id="Engineering">
+                <label for="Engineering">Engineering</label>
+            </li>
+            <li>
+                <input type="checkbox" id="Math">
+                <label for="Math">Math</label>
+            </li>
+            <li>
+                <input type="checkbox" id="Other">
+                <label for="Other">Other</label>
+            </li>
+            <br>
+
+            <li id="filter_header">Language</li>
+            <li>
+                <input type="checkbox" id="English">
+                <label for="English">English</label>
+            </li>
+            <li>
+                <input type="checkbox" id="Arabic">
+                <label for="Arabic">Arabic</label>
+            </li>
+            <br>
+
+            <li id="filter_header">
+                Price
+            </li>
+            <li>
+                <span><label for="Min_Price">Min</label></span>
+                <span><input type="number" id="Min_Price"></span>
+                <span><label for="Max_Price">Max</label></span>
+                <span><input type="number" id="Max_Price"></span>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Using JS to input the searched courses in here & pagyfying-->
+</body>
+</html>

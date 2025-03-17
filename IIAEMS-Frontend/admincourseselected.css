@@ -1,0 +1,118 @@
+
+/*header and nav bar uniform throughout*/
+/* Logo & logout button styling */
+* {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+#main_header{
+    background-color: #204A87;
+    height: 80px;
+}
+
+#IIAEM_Logo{
+    position: absolute;
+    top: 25px;
+    left: 45px;
+}
+
+#logout_button button{
+    background-color: #B5DCCB;
+    color: #204A87;
+    font-size: 1em;
+    font-family: "Arial";
+    height: 35px;
+    width: 150px;
+    border-radius: 6px;
+    cursor: pointer;
+    position: fixed;
+    top: 25px; /* Distance from the top of the screen */
+    right: 45px; /* Distance from the right of the screen */
+}
+
+/* NavBar Styling */
+
+.navbar {
+    display:flex;
+    height: 40px;
+    background-color: #204A87;
+    color: white;
+    list-style-type: none;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.navbar a:hover{
+    background-color: #092349;
+    text-decoration: none;
+    
+}
+
+.navbar a{
+    text-decoration: none;
+    color: white;
+}
+
+/*all above uniform throughout*/
+
+.modules_page{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 5fr;
+    grid-template-columns: 125px 1fr 1fr 1fr;
+    background-color: purple;
+    margin-left: 3%;
+    margin-right: 3%;
+    grid-template-areas: 
+    'Course_name course_name_field '
+    'Course_Code course_code_field'
+    'Instructor instructor_name_field'
+    'Completion_Time completion_time_field'
+    'Schedule schedule_field'
+    'Description description_field';
+}
+
+.modules_page input{
+    border: 2px solid grey; /* Adds a grey border */
+    padding: 10px; /* Optional: Adds some inner spacing */
+    border-radius: 5px;
+
+}
+.course_name{
+    grid-area: Course_name;
+}
+.course_name_field{
+    grid-area: course_name_field;
+}
+.Course_Code{
+    grid-area: Course_Code;
+}
+.Course_Code_field{
+    grid-area: course_code_field;
+}
+.Instructor{
+    grid-area: Instructor;
+}
+.instructor_name_field{
+    grid-area: instructor_name_field;
+}
+.Completion_Time{
+    grid-area: Completion_Time;
+}
+.Completion_Time_field{
+    grid-area: completion_time_field;
+}
+.Schedule{
+    grid-area: Schedule;
+}
+.Schedule_field{
+    grid-area: schedule_field;
+}
+.Description{
+    grid-area: Description;
+}
+.Description_field{
+    grid-area: description_field;
+}

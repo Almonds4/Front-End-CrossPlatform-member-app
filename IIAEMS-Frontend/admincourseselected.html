@@ -1,0 +1,77 @@
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>admin_coursesselected</title>
+    <link rel="stylesheet" href="personal_admincourseselected.css">
+</head>
+
+<body>
+
+    <!-- For the main header, logo, and logout button -->
+
+    <header id="main_header">  
+        
+        <span id="IIAEM_Logo">
+            <img src = “IIAEM URL” height = "35px" width = "150px" alt = "IIAEM Logo"> <!-- URL REQUIRED  -->
+        </span>
+
+        <span id="logout_button">
+        <a href="link_to_main_page"> <!-- HTML FILE NAME REQUIRED -->
+            <button><span>Logout</span></button>
+        </a>
+        </span>
+
+    </header>
+        <!-- For the navigation bar: search, courses, resources, mssgs -->
+
+    <nav>
+        <ul class="navbar">
+            <li><a href="admin_search.html">Search</a></li>
+            <li><a href="admin_courses.html">Courses</a></li>
+            <li><a href="admin_resources.html">Resources</a></li>
+            <li><a href="admin_messages.html">Messages</a></li>
+        </ul>
+    </nav>
+    <br>
+    <!--all above uniform throughout. Need closing body & HTML tag-->
+
+    <!-- course info and modules page-->
+
+    <div class = "modules_page">
+        <div class="Course_name">
+            <p>Course Name</p>
+        </div>
+        <input type="text" class="course_name_field" id="course_name_field" placeholder="change course name">
+
+        <div class = "Course_Code">
+            <p>Course Code</p>
+        </div> 
+        <input type="text" class="Course_Code_field" id="Course_Code_field" placeholder="change course code">
+
+        <div class="Instructor">
+            <p>Instructor</p>
+        </div>
+        <input type="text" class="instructor_name_field" id="instructor_name_field"placeholder="Instructor name">
+
+        <div class="Completion_Time">
+            <p>Completion Time</p>
+        </div>
+        <input type="text" class="completion_time_field" id="completion_time_field" placeholder="Completion time">
+
+        <div class="Schedule">
+            <p>Schedule</p>
+        </div>
+        <input type="text" class="schedule_field" id="schedule_field" placeholder="Schedule">
+
+        <div class="Description">
+            <p>Description</p>
+        </div>
+        <input type="text" class="description_field" id="description_field" placeholder="Description">
+
+    </div> 
+
+</body>
+</html>
