@@ -1,48 +1,47 @@
 <!DOCTYPE html>
- <html lang="en">
- <head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Public Portal | IIAEMS</title>
-     <!-- Bootstrap CSS -->
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-     <!-- Custom CSS-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Portal | IIAEMS</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
      <link href="style.css" rel="stylesheet">
 
- </head>
- <body>
-     <!-- Navbar -->
-     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-         <div class="container">
-             <a class="navbar-brand" href="#">IIAEMS</a>
-             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                 <span class="navbar-toggler-icon"></span>
-             </button>
-             <div class="collapse navbar-collapse" id="navbarNav">
-                 <ul class="navbar-nav ms-auto">
-                     <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-                     <li class="nav-item"><a class="nav-link" href="#about.html">About Us</a></li>
-                     <li class="nav-item"><a class="nav-link" href="#programs">Programs</a></li>
-                     <li class="nav-item"><a class="nav-link" href="resource.html">Resources</a></li>
-                     <li class="nav-item"><a class="nav-link" href="#contact.html">Contact Us</a></li>
-                     <li class="nav-item"><a class="nav-link" href="signup.html">Sign Up</a></li>
- 
-                 </ul>
-             </div>
-         </div>
-     </nav>
-     
-         <!-- Hero Section -->
-    <section id="home" class="text-center p-5 bg-light">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <img src="assets/images/IIAEMS Current Logo.jpg" alt="IIAEMS Logo" width="150">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#programs">Programs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#resources">Resources</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="signup.html">Sign Up</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="home">
         <div class="container">
             <h1>Transform Your Future with IIAEMS</h1>
             <p>Access world-class education resources and courses designed to help you succeed in today's competitive landscape.</p>
             <button class="btn-explore">Explore Programs</button>
         </div>
     </section>
- 
-         <!-- About Us Section -->
-         <section id="about" class="p-5">
+
+    <!-- About Us Section -->
+    <section id="about">
         <div class="container">
             <h2 class="section-title">What is IIAEMS?</h2>
             <div class="row">
@@ -57,10 +56,10 @@
     </section>
 
     <!-- Featured Courses Section -->
-    <section class="featured-courses">
+    <section class="featured-courses bg-light">
         <div class="container">
             <h2 class="section-title">Our Featured Courses</h2>
-            <div class="row">
+            <div class="row g-4">
                 <div class="col-md-4">
                     <div class="course-card">
                         <div class="course-image">
@@ -80,10 +79,10 @@
                         <div class="course-image">
                         </div>
                         <div class="course-details">
-                            <h5 class="course-title">Molecular Biology</h5>
-                            <p>Learn to build complex molecules with step-by-step techniques explained.</p>
+                            <h5 class="course-title">Data Science & Analytics</h5>
+                            <p>Master data analysis techniques and machine learning algorithms.</p>
                             <div class="course-meta">
-                                <span>12 Weeks</span>
+                                <span>10 Weeks</span>
                                 <span>$499</span>
                             </div>
                         </div>
@@ -110,10 +109,66 @@
         </div>
     </section>
 
-           <!-- Learning Resources Section -->
-    <section class="resources-section py-5">
+
+     <!-- Featured Programs Section -->
+     <section class="featured-program bg-light">
         <div class="container">
-            <h2 class="section-title mb-4">Learning Resources</h2>
+            <h2 class="section-title">Our Featured Programs</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="program-card">
+                        <div class="program-image">
+                        </div>
+                        <div class="program-details">
+                            <h5 class="program-title">Full Stack Web Development</h5>
+                            <p>Learn to build complete web applications with front-end and back-end technologies.</p>
+                            <div class="program-meta">
+                                <span>12 Weeks</span>
+                                <span>$599</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="program-card">
+                        <div class="program-image">
+                        </div>
+                        <div class="program-details">
+                            <h5 class="program-title">Data Science & Analytics</h5>
+                            <p>Master data analysis techniques and machine learning algorithms.</p>
+                            <div class="program-meta">
+                                <span>10 Weeks</span>
+                                <span>$499</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="program-card">
+                        <div class="program-image">
+                        </div>
+                        <div class="program-details">
+                            <h5 class="program-title">Molecular Biology</h5>
+                            <p>Learn to build complex molecules with step-by-step techniques explained.</p>
+                            <div class="program-meta">
+                                <span>12 Weeks</span>
+                                <span>$499</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <a href="programs.html" class="btn btn-success btn-lg">View All Programs</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Learning Resources Section -->
+    <section id="resources" class="resources-section">
+        <div class="container">
+            <h2 class="section-title">Learning Resources</h2>
             <div class="row g-4">
                 <div class="col-md-6">
                     <div class="resource-card p-4 border rounded shadow-sm h-100">
@@ -142,16 +197,15 @@
         </div>
     </section>
 
-
-      <!-- Education Programs Section -->
-    <section class="education-programs py-5 bg-light">
+    <!-- Education Programs Section -->
+    <section id="programs" class="education-programs">
         <div class="container">
-            <h2 class="section-title mb-4">Education Programs</h2>
+            <h2 class="section-title">Education Programs</h2>
             
             <!-- Nav tabs - Bootstrap 5 style -->
             <ul class="nav nav-tabs mb-4" id="programTabs" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="certificates-tab" data-bs-toggle="tab" data-bs-target="#certificates" type="button" role="tab" aria-controls="certificates" aria-selected="true">Certificate Programs</button>
+                    <button class="nav-link active" id="certificates-tab" data-bs-toggle="tab" data-bs-target="#certificates" type="button" role="tab" aria-controls="certificates" aria-selected="true">Education Programs</button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="degrees-tab" data-bs-toggle="tab" data-bs-target="#degrees" type="button" role="tab" aria-controls="degrees" aria-selected="false">Degree Programs</button>
@@ -165,8 +219,8 @@
                 <div class="tab-pane fade show active" id="certificates" role="tabpanel" aria-labelledby="certificates-tab">
                     <div class="row align-items-center">
                         <div class="col-md-7">
-                            <h5>Professional Certificate Programs</h5>
-                            <p>Our carefully designed certificate programs aim to equip you with industry-specific knowledge and credentials recognized by employers worldwide. These programs are comprehensive, engaging, and provide professional balance to ensure you're job-ready upon completion.</p>
+                            <h5>Education Programs</h5>
+                            <p>Our carefully designed programs aim to equip you with industry-specific knowledge and credentials recognized by employers worldwide. These programs are comprehensive, engaging, and provide professional balance to ensure you're job-ready upon completion.</p>
                             <ul>
                                 <li>Industry-aligned curriculum</li>
                                 <li>Hands-on project work</li>
@@ -228,34 +282,37 @@
         </div>
     </section>
 
-
-        <!-- Contact Section -->
-        <section class="contact-section">
-            <div class="container">
-                <h2>Contact & Support</h2>
-                <p>Have Questions? Please contact us at:</p>
-                <br> 
-                <br> 
-                <br> 
-                <br> 
-                
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Contact & Support</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Get in Touch</h4>
+                    <p>Have questions? We're here to help!</p>
+                    <ul class="list-unstyled mt-4">
+                        <li class="mb-3"><strong>Email:</strong> support@iiaems.edu</li>
+                        <li class="mb-3"><strong>Phone:</strong> (123) 456-7890</li>
+                        <li class="mb-3"><strong>Hours:</strong> Monday-Friday, 9AM-5PM EST</li>
+                    </ul>
+                </div>
             </div>
-        </section>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <h4>IIAEMS</h4>
-                    <p>Institute for...</p>
-                </div>
+                    <img src="assets/images/IIAEMS Current Logo.jpg" alt="IIAEMS Logo" width="150">
+                    <p>Institute</p>                </div>
                 <div class="col-md-4">
                     <h4>Quick Links</h4>
                     <ul class="list-unstyled">
-                        <li><a href="home.html" class="text-white">Home</a></li>
-                        <li><a href="about.html" class="text-white">About Us</a></li>
-                        <li><a href="contact.html" class="text-white">Contact</a></li>
+                        <li><a href="#home" class="text-white">Home</a></li>
+                        <li><a href="#about" class="text-white">About Us</a></li>
+                        <li><a href="#contact" class="text-white">Contact</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4">
@@ -275,8 +332,8 @@
             </div>
         </div>
     </footer>
- 
-     <!-- Bootstrap JS -->
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
- </body>
- </html>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
