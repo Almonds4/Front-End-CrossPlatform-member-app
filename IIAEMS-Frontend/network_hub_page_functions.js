@@ -42,7 +42,9 @@ const posts = document.querySelectorAll(".post");
 posts.forEach((post) => {
   const content = post.querySelector(".post-content");
 
+  //Allows post to be expanded to see content
   post.addEventListener("click", function () {
+    //If post clicked is already active -> closes post
     if (this.classList.contains("active-post")) {
       this.classList.remove("active-post", "post-open");
       content.style.height = "0";
@@ -50,12 +52,14 @@ posts.forEach((post) => {
       return;
     }
 
+    //Removes active setting from other post when opening new post
     posts.forEach((p) => {
       p.classList.remove("active-post", "post-open");
       p.querySelector(".post-content").style.height = "0";
       p.querySelector(".post-content").style.opacity = "0";
     });
 
+    //Adds active
     this.classList.add("active-post", "post-open");
     content.style.height = content.scrollHeight + "px";
     content.style.opacity = "1";
