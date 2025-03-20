@@ -1,0 +1,206 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #1e4486 !important; /* Dark blue */
+    padding: 20px 20px;
+    display: flex;
+    flex-direction: column; /* Ensure navbar items are stacked vertically */
+    align-items: center; /* Center content */
+}
+
+.top-right {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.top-right .text-white {
+    margin-right: 15px;
+}
+
+.navbar-nav .nav-link {
+    color: white !important;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* Sidebar */
+.sidebar {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 1px solid #aaa;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.sidebar ul {
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar ul li {
+    padding: 5px 0;
+    border: none; /* Remove grid lines */
+}
+
+.sidebar ul li a {
+    text-decoration: none; /* Remove underline */
+    color: black; /* Set color to black */
+}
+
+/* Increase space between last item in 'General' and 'Security' */
+.sidebar h2 + ul li:last-child {
+    margin-bottom: 15px; /* Adds margin after the last list item in "General" */
+}
+
+/* Hover effect for list items (optional) */
+.sidebar ul li a:hover {
+    color: #007bff; /* You can change this to any color you want on hover */
+}
+
+/* Main Content */
+main {
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 50%; 
+    max-width: 700px; 
+    margin: 20px auto; 
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* Form Styling */
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+label {
+    font-weight: bold;
+    width: 100%;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.d-flex {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%; /* Ensure it takes up the full width of the container */
+}
+
+.d-flex input {
+    flex: 1;  /* Ensures input takes up remaining space */
+    padding: 5px; /* Reduced padding for smaller inputs */
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    font-size: 14px; /* Reduced font size for the input fields */
+}
+
+.d-flex button {
+    flex: 0 0 150px;  /* Set a fixed width for the button */
+    padding: 5px 10px; /* Reduced padding for a smaller button */
+    border-radius: 20px; /* Rounded button */
+    cursor: pointer;
+    font-size: 14px; /* Reduced font size for the button */
+}
+
+.d-flex input, .d-flex button {
+    width: 50%;  /* Both input and button together occupy 50% of the line */
+}
+
+.btn-custom {
+    background-color: #b3dcc2; /* Light Green */
+    color: black;
+    border: none;
+}
+
+.btn-custom:hover {
+    background-color: #9acba8;
+}
+
+/* Availability Section */
+.availability-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align everything to the left side */
+    gap: 10px;
+}
+
+.availability-section label {
+    margin-right: 10px;
+}
+
+.availability-section input {
+    width: 70px; /* Smaller width for time input */
+    padding: 5px; /* Reduced padding for smaller input */
+    font-size: 14px; /* Reduced font size for time inputs */
+}
+
+/* Availability section alignment */
+.availability-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/* Updated specific styling for icons */
+.top-right i.fas.fa-envelope, .top-right i.fas.fa-user {
+    color: #b3dcc2 !important; /* Match the "Change" button color */
+}
+
+/* Update the hover effect for the envelope and user icons */
+.top-right i.fas.fa-envelope:hover, .top-right i.fas.fa-user:hover {
+    color: #9acba8 !important; /* Darker shade on hover */
+}
+
+@media (max-width: 768px) {
+    .form-group {
+        max-width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .d-flex {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .d-flex input, .d-flex button {
+        width: 100%;
+    }
+
+    /* For availability section on small screens */
+    .availability-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
