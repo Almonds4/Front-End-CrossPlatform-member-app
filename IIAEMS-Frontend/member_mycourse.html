@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Member Portal | IIAEMS</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Fontawesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="member_mycourse_style.css">
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">IIAEMS Member Portal</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#dashboard">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#my-courses">My Courses</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#notifications">Notifications</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#settings">Settings</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="main-container">
+        <section class="left-container">
+            <h3>My Courses</h3>
+            <div>
+                <p>Language</p>
+                <div>
+                <input type="radio" class="radio-input" id="english" value="english">
+                <label for="english"> English </label>
+            </div>
+            <div>
+                <input type="radio" class="radio-input" id="Arabic" value="Arabic">
+                <label for="Arabic"> Arabic </label>
+            </div>
+        </div>
+        <div>
+            <p>Status</p>
+            <div>
+            <input type="radio" class="radio-input" id="complete" value="complete">
+            <label for="complete"> Complete </label>
+        </div>
+        <div>
+            <input type="radio" class="radio-input" id="incomplete" value="incomplete">
+            <label for="incomplete"> Incomplete </label>
+        </div>
+    </div>
+        </section>
+        <section class="right-container">
+             <!-- SEARCH BAR -->
+        <div style="display: flex; gap: 10px; padding: 10px;">
+      <input class="search" type="text" />
+
+      <!-- DROPDOWN MENU -->
+      <div class="dropdown">
+        <div class="select">
+          <span class="selected">Medical</span>
+          <div class="caret"><i class="fa-solid fa-caret-left" style="color: #ffffff;"></i></i></div>
+        </div>
+        <ul class="menu">
+          <li class="active-filter">Medical</li>
+          <li>Technology and Engineering</li>
+          <li>Arts</li>
+          <li>Language Studies</li>
+          <li>Architecture</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- COURSE LIST -->
+
+    <div class="course-list">
+        <div class="course">
+            <div class="course-img">
+                <img alt="Course Cover Image" src="member_portal_images/volunteer_icon.png">
+            </div>
+            <div class="course-content">
+                <h4 class="course-title"> Title</h4>
+                <p class="instructor-name"> Instructor</p>
+                <p class="course-description"> Description goes here.  unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passa.</p>
+                <p class="module-tracker"> 0/n Hours Logged 0/n Modules Completed</p>
+            </div>
+            <div class="course-attributes">
+                <div class="completion">Complete</div>
+                <div class="grade">Grade: 59%</div>
+            </div>
+
+        </div>
+
+    </div>
+    </section>
+        </section>
+    </main>
+
+
+    <script src="member_mycourse_functions.js"></script>
+  </body>
+
+</html>

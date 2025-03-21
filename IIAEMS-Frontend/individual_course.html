@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" ftop="width=device-width, initial-scale=1.0" />
+    <title>Member Portal | IIAEMS</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Fontawesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link href="individual_course_style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">IIAEMS Member Portal</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#dashboard">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#my-courses">My Courses</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#notifications">Notifications</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#settings">Settings</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="main-container">
+      <section class="left-container">
+        <h4 id="course-title">Course title</h4>
+        <div class="module-list">
+          <div id="module1" class="module">
+            <div class="module-title">Module 1</div>
+          </div>
+          <div id="module2" class="module">
+            <div class="module-title">Module 2</div>
+          </div>
+        </div>
+      </section>
+      <section class="right-container">
+        <article id="module1-content" class="module-content">
+          <div
+            style="
+              background-color: white;
+              border-radius: 10px;
+              width: fit-content;
+              padding: 25px;
+            "
+          >
+            <h2 class="selected-module-title" id="module1-title">Module 1</h2>
+          </div>
+          <video class="module-video" id="module1-video" controls>
+            <source src="Video/stock_test_video.mp4" />
+          </video>
+          <div style="display: flex">
+            <div class="module-description" id="module1-description">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
+              aliquam molestie faucibus. Donec cursus nec odio at sodales.
+              Suspendisse vulputate purus vitae scelerisque pharetra. Etiam
+              euismod, lectus ac dignissim ornare, nulla ipsum suscipit libero,
+              et molestie mauris massa in erat. Cras mi ex, accumsan non commodo
+              sit amet, efficitur sed augue. Nam hendrerit rhoncus lorem, vel
+              ultrices nulla aliquam ut. Quisque nec dolor quis orci venenatis
+              pellentesque. Suspendisse a dolor eget nibh volutpat malesuada.
+            </div>
+            <div class="upload-download-container">
+              <div>Download <i class="fa-solid fa-file-arrow-down"></i></div>
+              <input style="display: none" id="module1-download" type="file" />
+              <label for="module1-download" class="module-label">
+                Worksheet
+              </label>
+              <div>Upload <i class="fa-solid fa-file-arrow-up"></i></div>
+              <input style="display: none" id="module1-upload" type="file" />
+              <label for="module1-upload" class="module-label">
+                Submission
+              </label>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <script src="individual_course_functions.js"></script>
+  </body>
+</html>

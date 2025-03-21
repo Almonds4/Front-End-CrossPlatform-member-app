@@ -1,0 +1,154 @@
+.main-container {
+  display: flex;
+  width: 100vw;
+  height: fit-content;
+  padding: 50px;
+}
+
+.left-container {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  gap: 40px;
+}
+
+.right-container {
+  width: 80%;
+}
+
+#search-bar {
+  width: 100vw;
+  height: 60px;
+  background-color: #dad8d8;
+  display: flex;
+  padding: 10px;
+  gap: 20px;
+}
+
+.dropdown {
+  min-width: 15em;
+  position: relative;
+}
+
+.dropdown * {
+  box-sizing: border-box;
+}
+
+.select {
+  background: #2a2f3b;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px #2a2f3b solid;
+  border-radius: 0.5em;
+  padding: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+  width: 100%;
+}
+
+.select-clicked {
+  border: 2px #26489a solid;
+  box-shadow: 0 0 0.8em #26489a;
+}
+
+.select:hover {
+  background: #323741;
+}
+
+.caret {
+  transition: 0.3s;
+}
+
+.caret-rotate {
+  transform: rotate(-90deg);
+}
+
+.menu {
+  list-style: none;
+  padding: 0.2em 0.5em;
+  background: #323741;
+  border: 1px #363a43;
+  box-shadow: 0.05em 1em rgba(0, 0, 0, 0.2);
+  border-radius: 0.5em;
+  color: #9fa5b5;
+  position: absolute;
+  top: 3em;
+  left: 50%;
+  width: 100%;
+  transform: translateX(-50%);
+  opacity: 0;
+  display: none;
+  transition: 0.2s;
+  z-index: 1;
+}
+
+.menu li {
+  padding: 0.7em 0.5em;
+  margin: 0.3em 0;
+  border-radius: 0.5em;
+  cursor: pointer;
+}
+
+.menu li:hover {
+  background: #2a2d35;
+}
+
+.menu-open {
+  display: block;
+  opacity: 1;
+}
+
+.active {
+  background: #23242a;
+}
+
+.course-list {
+  width: 100%;
+  height: fit-content;
+}
+
+.course {
+  display: flex;
+  width: 100%;
+  height: 250px;
+  border-bottom: 1px solid black;
+  gap: 50px;
+  padding: 10px;
+  align-items: center;
+  position: relative;
+}
+
+.course-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  width: auto;
+  max-width: 150px;
+  max-height: 100px;
+}
+
+.course-attributes {
+  display: flex;
+  gap: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.course-attributes * {
+  border: 1px solid rgba(47, 79, 79, 0.4);
+  padding: 10px;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+.completion {
+  background-color: lightgreen;
+}
+
+.grade {
+  background-color: lightcoral;
+}

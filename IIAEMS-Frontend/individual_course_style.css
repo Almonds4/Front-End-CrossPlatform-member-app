@@ -1,0 +1,111 @@
+html {
+  background-color: #fef9f0;
+  overflow-x: hidden;
+}
+
+.main-container {
+  display: flex;
+  width: 100vw;
+  height: fit-content;
+  padding: 50px;
+  background-color: #fef9f0;
+  gap: 20px;
+}
+
+.left-container {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  gap: 20px;
+  border: 1px solid darkslategray;
+  border-radius: 15px;
+  background-color: white;
+  height: 450px;
+  padding: 10px;
+}
+
+.left-container h4 {
+  border-bottom: 1px solid darkslategray;
+  padding: 5px;
+}
+
+.module-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+  overflow: scroll;
+  overflow-x: hidden;
+  padding: 10px;
+}
+
+.module {
+  border-radius: 10px;
+  padding: 5px;
+  background-color: #a7a7a7;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.active-module {
+  background-color: #204a87;
+  color: white;
+}
+
+.module-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.active-module-list {
+  display: block;
+}
+
+.module:hover {
+  transform: scale(1.05);
+}
+
+.right-container {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.module-content video {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+}
+
+.selected-module {
+  display: block !important;
+}
+
+.module-content {
+  display: none;
+}
+
+.upload-download-container {
+  padding: 15px;
+  width: 40%;
+  max-width: 200px;
+  height: auto;
+  background-color: #204a87;
+  color: white;
+  border-radius: 15px;
+}
+
+.module-label {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.module-description {
+  background-color: white;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+}
