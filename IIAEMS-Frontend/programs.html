@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programs | IIAEMS</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+     <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">IIAEMS</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#programs">Programs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="resource.html">Resources</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact.html">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="signup.html">Sign Up</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="text-center p-5 bg-light">
+        <div class="container">
+            <h1>Academic Programs Catalog</h1>
+            <p>Explore our comprehensive range of programs and courses</p>
+        </div>
+    </section>
+
+    <!-- Search -->
+    <!-- <div class="search-container">
+        <div class="search-box">
+            <input type="text" placeholder="Search for programs, courses, or keywords...">
+            <button>Search</button>
+        </div>
+    </div>
+    -->
+    <main>
+          <!--
+        <section class="filters">
+            <h3>Filter Programs</h3>
+            <div class="filter-controls">
+                <select>
+                    <option>All Degree Types</option>
+                    <option>Bachelor's</option>
+                    <option>Master's</option>
+                    <option>Doctorate</option>
+                    <option>Certificate</option>
+                </select>
+                
+                <select>
+                    <option>All Departments</option>
+                    <option>Business</option>
+                    <option>Computer Science</option>
+                    <option>Engineering</option>
+                    <option>Liberal Arts</option>
+                    <option>Medicine</option>
+                    <option>Science</option>
+                </select>
+                
+                <select>
+                    <option>All Formats</option>
+                    <option>On Campus</option>
+                    <option>Online</option>
+                    <option>Hybrid</option>
+                </select>
+                
+                <select>
+                    <option>All Credits</option>
+                    <option>30-60 Credits</option>
+                    <option>60-120 Credits</option>
+                    <option>120+ Credits</option>
+                </select>
+                
+                <button>Apply Filters</button>
+            </div>
+        </section> 
+    -->
+
+        <h2>Featured Programs</h2>
+    
+        <div class="program-grid">
+            <!-- Only showing 3 main featured courses -->
+            <div class="program-card" data-program="Computer Science">
+                <div class="program-header" style="background-color: var(--navy);">
+                    <h3>Computer Science</h3>
+                    <span class="program-type">Bachelor's</span>
+                </div>
+                <div class="program-body">
+                    <p>Develop essential skills in programming, algorithms, and software development through our comprehensive Computer Science program.</p>
+                    <div class="program-details">
+                        <p><span class="badge">120 Credits</span> 4 Years</p>
+                        <p><span class="badge">On Campus</span> Full-time</p>
+                        <p><span class="badge">Fall/Spring</span> Enrollment</p>
+                    </div>
+                </div>
+                <div class="program-footer">
+                    <span>Dept. of Engineering</span>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+            </div>
+            
+            <div class="program-card" data-program="Business Administration">
+                <div class="program-header" style="background-color: var(--green);">
+                    <h3>Business Administration</h3>
+                    <span class="program-type">Master's</span>
+                </div>
+                <div class="program-body">
+                    <p>Advance your career with our MBA program, focusing on leadership, strategic management, and business analytics.</p>
+                    <div class="program-details">
+                        <p><span class="badge">48 Credits</span> 2 Years</p>
+                        <p><span class="badge">Hybrid</span> Part-time available</p>
+                        <p><span class="badge">All terms</span> Enrollment</p>
+                    </div>
+                </div>
+                <div class="program-footer">
+                    <span>Business School</span>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+            </div>
+            
+            <div class="program-card" data-program="Data Science">
+                <div class="program-header" style="background-color: var(--sand);">
+                    <h3>Data Science</h3>
+                    <span class="program-type">Certificate</span>
+                </div>
+                <div class="program-body">
+                    <p>Build expertise in data analysis, machine learning, and statistical methods through our industry-aligned certificate program.</p>
+                    <div class="program-details">
+                        <p><span class="badge">18 Credits</span> 8 Months</p>
+                        <p><span class="badge">Online</span> Self-paced</p>
+                        <p><span class="badge">Monthly</span> Enrollment</p>
+                    </div>
+                </div>
+                <div class="program-footer">
+                    <span>Continuing Education</span>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Signup Overlay Form -->
+    <div class="signup-overlay" id="signupOverlay">
+        <div class="signup-form">
+            <h3>Request Program Information</h3>
+            <p id="programTitle" class="mb-3">Program: <strong></strong></p>
+            
+            <form id="infoRequestForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+        
+                <div class="form-buttons">
+                    <button type="button" id="closeSignup" class="btn close-btn">Close</button>
+                    <button type="submit" class="btn">Submit Request</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>IIAEMS</h4>
+                    <p>Institute for...</p>
+                </div>
+                <div class="col-md-4">
+                    <h4>Quick Links</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="home.html" class="text-white">Home</a></li>
+                        <li><a href="about.html" class="text-white">About Us</a></li>
+                        <li><a href="contact.html" class="text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h4>Contact</h4>
+                    <address>
+                        <p>123 Education Street<br>
+                        Learning City, LC 12345</p>
+                        <p>Email: info@iiaems.edu<br>
+                        Phone: (123) 456-7890</p>
+                    </address>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col text-center">
+                    <p>&copy; 2025 IIAEMS. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const programCards = document.querySelectorAll('.program-card');
+            const signupOverlay = document.getElementById('signupOverlay');
+            const programTitle = document.getElementById('programTitle').querySelector('strong');
+            const closeSignupBtn = document.getElementById('closeSignup');
+            const infoRequestForm = document.getElementById('infoRequestForm');
+            
+            // Open signup form when clicking on a program card
+            programCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const programName = this.getAttribute('data-program');
+                    programTitle.textContent = programName;
+                    signupOverlay.style.display = 'flex';
+                });
+            });
+            
+            // Close signup form
+            closeSignupBtn.addEventListener('click', function() {
+                signupOverlay.style.display = 'none';
+            });
+            
+            // Form submission
+            infoRequestForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your interest! We will send program information to your email soon.');
+                signupOverlay.style.display = 'none';
+                infoRequestForm.reset();
+            });
+            
+            // Close overlay when clicking outside the form
+            signupOverlay.addEventListener('click', function(e) {
+                if (e.target === signupOverlay) {
+                    signupOverlay.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

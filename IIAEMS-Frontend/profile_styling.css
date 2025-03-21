@@ -1,0 +1,125 @@
+#uploadProfilePic {
+  display: none;
+}
+
+#profile-top {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-bottom: 30px;
+}
+
+#profile-picture {
+  width: auto;
+  height: auto;
+  max-width: 60px;
+  max-height: 100px;
+}
+
+#profile-top > label {
+  transition: 0.3s ease-in-out;
+  border: gray 1px solid;
+  width: fit-content;
+  height: fit-content;
+  padding: 5px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+#profile-top > label:hover {
+  transform: scale(1.05);
+  background-color: darkslategray;
+  color: white;
+}
+
+.flex-container {
+  display: flex;
+  gap: 40px;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+}
+
+.flex-container div {
+  flex: 1;
+  min-width: 300px;
+}
+
+.profile-value {
+  border: 1px solid darkslategray;
+  padding: 5px;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 400px;
+  min-height: 30px;
+  align-items: center;
+  margin: auto;
+}
+
+.clickable-value {
+  transition: 0.3s ease-in-out;
+  border: gray 1px solid;
+  width: fit-content;
+  height: fit-content;
+  padding: 5px;
+  border-radius: 15px;
+  cursor: pointer;
+  margin: auto;
+}
+
+.clickable-value:hover {
+  transform: scale(1.05);
+  background-color: darkslategray;
+  color: white;
+}
+
+label {
+  width: fit-content;
+  margin: auto;
+}
+
+.big-profile-value {
+  height: auto;
+  min-height: 100px;
+  max-height: 400px;
+  width: 100%;
+  max-width: 600px;
+  resize: vertical;
+  overflow-wrap: break-word;
+  border: 1px solid darkslategray;
+  border-radius: 5px;
+  box-sizing: border-box;
+  text-align: left;
+  vertical-align: top;
+}
+
+textarea {
+  vertical-align: top;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: black;
+}
+
+.links {
+  width: 50%;
+  margin: auto;
+}
+
+.links > input {
+  width: 70%;
+}
+
+#pfp-label {
+  display: none;
+}
