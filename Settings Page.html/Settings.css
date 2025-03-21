@@ -1,20 +1,21 @@
 /* General Styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
+    background-color: #f3f0eb;
 }
 
 /* Navbar */
 .navbar {
     background-color: #1e4486 !important; /* Dark blue */
-    padding: 20px 20px;
+    padding: 20px;
     display: flex;
-    flex-direction: column; /* Ensure navbar items are stacked vertically */
-    align-items: center; /* Center content */
+    flex-direction: row; /* Ensure navbar items are aligned horizontally */
+    justify-content: center; /* Center content */
+    align-items: center; /* Vertically center content */
 }
 
 .top-right {
-    position: absolute;
+    position: fixed; /* Fix the top-right content */
     right: 20px;
     top: 10px;
     display: flex;
@@ -29,14 +30,27 @@ body {
     color: white !important;
     font-weight: bold;
     margin-right: 10px;
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
 }
+
+.navbar-nav .nav-item:first-child .nav-link {
+    color: orange !important; /* Change the color of Home link to orange */
+  }
+  
+  .navbar-nav .nav-item:first-child .nav-link:hover {
+    color: darkorange !important; /* Change color on hover */
+  }
+  
 
 /* Sidebar */
 .sidebar {
     background-color: white;
     padding: 20px;
     border-radius: 10px;
+    width: 250px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    max-height: 70vh; /* 80% of the viewport height */
+    overflow-y: auto;
 }
 
 .sidebar h2 {
@@ -50,35 +64,40 @@ body {
 .sidebar ul {
     padding: 0;
     list-style: none;
+    border: none;
+    outline: none;
 }
 
 .sidebar ul li {
-    padding: 5px 0;
-    border: none; /* Remove grid lines */
+    padding: 1px 0;
+    border: none;
+    outline: none;
 }
 
 .sidebar ul li a {
-    text-decoration: none; /* Remove underline */
+    text-decoration: none; 
     color: black; /* Set color to black */
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
 }
 
 /* Increase space between last item in 'General' and 'Security' */
 .sidebar h2 + ul li:last-child {
-    margin-bottom: 15px; /* Adds margin after the last list item in "General" */
+    margin-bottom: 60px; /* Adds margin after the last list item in "General" */
 }
 
-/* Hover effect for list items (optional) */
+/* Hover effect for list items */
 .sidebar ul li a:hover {
-    color: #007bff; /* You can change this to any color you want on hover */
+    color: #007bff; 
 }
 
 /* Main Content */
 main {
     background-color: white;
-    padding: 10px;
+    padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    width: 50%; 
+    height: 100vh;
+    width: 60%; 
     max-width: 700px; 
     margin: 20px auto; 
 }
@@ -113,11 +132,12 @@ label {
     display: flex;
     align-items: center;
     gap: 10px;
-    width: 100%; /* Ensure it takes up the full width of the container */
+    width: 50%; /* Ensure it takes up the full width of the container */
 }
 
 .d-flex input {
     flex: 1;  /* Ensures input takes up remaining space */
+    max-width: 400px; /* Sets a shorter maximum width */
     padding: 5px; /* Reduced padding for smaller inputs */
     border-radius: 5px;
     border: 1px solid #ced4da;
@@ -125,15 +145,13 @@ label {
 }
 
 .d-flex button {
-    flex: 0 0 150px;  /* Set a fixed width for the button */
-    padding: 5px 10px; /* Reduced padding for a smaller button */
+    flex: 0 0 auto;  /* Set a fixed width for the button */
+    padding: 4px; /* Reduced padding for a smaller button */
+    width: 100px; /* Shortens buttons to occupy less space */
     border-radius: 20px; /* Rounded button */
     cursor: pointer;
     font-size: 14px; /* Reduced font size for the button */
-}
-
-.d-flex input, .d-flex button {
-    width: 50%;  /* Both input and button together occupy 50% of the line */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
 }
 
 .btn-custom {
@@ -150,31 +168,36 @@ label {
 .availability-section {
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* Align everything to the left side */
-    gap: 10px;
+    gap: 5px;
+    padding: 0; /* Remove any internal padding */
+    margin: 0; /* Remove any external margins */
 }
 
 .availability-section label {
-    margin-right: 10px;
+    margin: 0; /* Remove any margin around the label */
+    padding: 0; /* Remove any padding around the label */
+    display: inline-block;
 }
 
 .availability-section input {
-    width: 70px; /* Smaller width for time input */
+    margin: 0; /* Adds a subtle spacing for visual clarity */
+    width: 100%; /* Allow the input to be responsive */
+    max-width: 100px; /* Limiting width for small screens */
     padding: 5px; /* Reduced padding for smaller input */
+    border-radius: 8px;
+    border: 1px solid #ccc;
     font-size: 14px; /* Reduced font size for time inputs */
 }
 
-/* Availability section alignment */
-.availability-section {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.availability-section span {
+    margin: 0 !important;
+    padding: 0; 
 }
-
 
 /* Updated specific styling for icons */
 .top-right i.fas.fa-envelope, .top-right i.fas.fa-user {
-    color: #b3dcc2 !important; /* Match the "Change" button color */
+    color: #b3dcc2 !important; 
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
 }
 
 /* Update the hover effect for the envelope and user icons */
@@ -203,4 +226,116 @@ label {
         flex-direction: column;
         align-items: flex-start;
     }
+}
+/* Styling for the bottom container */
+.bottom-container {
+    display: flex;
+    justify-content: space-between;
+    background-color: #1e4486;
+    padding: 20px;
+    color: white;
+}
+
+/* Left section of the container */
+.left-side {
+    width: 50%;
+}
+
+.main-text,
+.secondary-text {
+    display: block; /* Make both texts block-level elements so they take up full width */
+    width: 100%; /* Ensure they can take up the full available width */
+    word-wrap: break-word; /* Allow the text to break to the next line when it reaches the container's width */
+    white-space: normal; /* Make sure long words will break and wrap correctly */
+}
+
+.main-text {
+    font-size: 18px; /* Larger text size for the main text */
+    display: inline-block; /* Inline-block to control the width */
+    position: relative; /* For positioning the underline */
+    padding-bottom: 15px;
+}
+
+.main-text::after {
+    content: ''; /* Empty content for the pseudo-element */
+    position: absolute;
+    bottom: 0; /* Position it below the text */
+    left: 0;
+    width: 10%; /* Short underline width, adjust as needed */
+    height: 1px; /* Underline height */
+    background-color: #b3dcc2; /* Green color for the underline */
+}
+
+.secondary-text {
+    margin-top: 10px;
+    font-size: 14px; /* Smaller font size for the secondary text */
+}
+
+/* Circles below the texts */
+.circles {
+    display: flex;
+    margin-top: 20px;
+}
+
+.circle {
+    width: 20px;
+    height: 20px;
+    background-color: FEF9F0;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Right section of the container */
+.right-side {
+    display: flex;
+    width: 40%;
+    justify-content: space-between;
+}
+
+.column {
+    width: 30%;
+}
+
+.column-title {
+    font-weight: bold;
+    font-size: 20px; /* Font size for the column titles */
+    display: inline-block; /* Inline-block to control the width */
+    position: relative; /* For positioning the underline */
+    padding-bottom: 15px;
+}
+
+.column-title::after {
+    content: ''; /* Empty content for the pseudo-element */
+    position: absolute;
+    bottom: 0; /* Position it below the text */
+    left: 0;
+    width: 70%; /* Short underline width, adjust as needed */
+    height: 1px; /* Underline height */
+    background-color: #b3dcc2; /* Green color for the underline */
+}
+
+/* Styling for the unordered list in the columns */
+ul {
+    padding-left: 0; /* Simplified padding */
+    list-style-type: none; /* Removes default bullets */
+    text-align: left; /* Aligns the list items to the left */
+}
+
+/* List items in the columns */
+li {
+    margin-bottom: 5px;
+    font-size: 14px; /* Smaller font size for list items */
+}
+
+/* New footer container styling */
+.footer-container {
+    background-color: #1e4486; /* Same background color as the previous container */
+    color: white;
+    text-align: center;
+    padding: 10px;
+    border-top: 1px solid lightblue; /* Lighter blue border separating the containers */
+}
+
+.footer-text {
+    font-size: 14px; /* Font size for the footer text */
 }

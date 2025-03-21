@@ -1,50 +1,38 @@
-document.addEventListener("DOMContentLoaded", function () {
-    // Handle form submissions
-    function handleFormSubmission(formId, inputId, successMessage) {
-        const form = document.getElementById(formId);
-        if (!form) return;
-
-        form.addEventListener("submit", function (event) {
-            event.preventDefault(); // Prevent actual form submission
-            const inputField = document.getElementById(inputId);
-            if (inputField && inputField.value.trim() !== "") {
-                alert(successMessage + ": " + inputField.value);
-                inputField.value = ""; // Clear input field after submission
-            } else {
-                alert("Please enter a valid value.");
-            }
-        });
-    }
-
-    // Attach event listeners to forms
-    handleFormSubmission("personal-info-form", "username", "Username updated");
-    handleFormSubmission("personal-info-form", "first-name", "First name updated");
-    handleFormSubmission("personal-info-form", "last-name", "Last name updated");
-    handleFormSubmission("email-form", "email", "Email updated");
-    handleFormSubmission("availability-form", "start-time", "Availability updated");
-
-    // Availability Form Submission
-    const availabilityForm = document.getElementById("availability-form");
-    if (availabilityForm) {
-        availabilityForm.addEventListener("submit", function (event) {
-            event.preventDefault();
-            const startTime = document.getElementById("start-time").value;
-            const endTime = document.getElementById("end-time").value;
-
-            if (startTime && endTime && startTime < endTime) {
-                alert(`Availability set from ${startTime} to ${endTime}`);
-            } else {
-                alert("Please enter a valid time range.");
-            }
-        });
-    }
-
-    // Sidebar Links Highlighting (Optional)
-    const sidebarLinks = document.querySelectorAll(".sidebar ul li a");
-    sidebarLinks.forEach(link => {
-        link.addEventListener("click", function () {
-            sidebarLinks.forEach(l => l.classList.remove("active"));
-            this.classList.add("active");
-        });
+document.addEventListener('DOMContentLoaded', () => {
+    // Handle personal information form submission
+    const personalInfoForm = document.getElementById('personal-info-form');
+    const firstNameInput = document.getElementById('first-name');
+    const lastNameInput = document.getElementById('last-name');
+    const usernameInput = document.getElementById('username');
+  
+    personalInfoForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      alert('Personal information updated successfully!');
+      console.log('Updated Username:', usernameInput.value);
+      console.log('Updated First Name:', firstNameInput.value);
+      console.log('Updated Last Name:', lastNameInput.value);
     });
-});
+  
+    // Handle email form submission
+    const emailForm = document.getElementById('email-form');
+    const emailInput = document.getElementById('email');
+  
+    emailForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      alert('Email updated successfully!');
+      console.log('Updated Email:', emailInput.value);
+    });
+  
+    // Handle availability form submission
+    const availabilityForm = document.getElementById('availability-form');
+    const timeStartInput = availabilityForm.querySelectorAll('input')[0];
+    const timeEndInput = availabilityForm.querySelectorAll('input')[1];
+  
+    availabilityForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      alert('Availability updated successfully!');
+      console.log('Available from:', timeStartInput.value);
+      console.log('Available until:', timeEndInput.value);
+    });
+  });
+  
