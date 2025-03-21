@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Member Portal | IIAEMS</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Fontawesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link href="member_course_assignments_style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">IIAEMS Member Portal</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#dashboard">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#my-courses">My Courses</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#notifications">Notifications</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#settings">Settings</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="main-container">
+      <section class="left-container">
+        <h4>Courses</h4>
+        <div class="course-list">
+          <div id="course1" class="course">
+            <div class="course-title">Course 1</div>
+          </div>
+          <div id="course2" class="course">
+            <div class="course-title">Course 2</div>
+          </div>
+        </div>
+      </section>
+      <section class="right-container">
+        <article id="course1-content" class="course-content">
+          <div
+            style="
+              background-color: white;
+              border-radius: 10px;
+              width: fit-content;
+              padding: 25px;
+            "
+          >
+            <h2 class="selected-course-title" id="course1-title">Course 1</h2>
+            <div id="instructor-name">Instructor Name</div>
+          </div>
+          <div id="module-list1" class="module-list">
+            <div id="module1" class="module">
+              <div class="module-top">
+                <h4 class="Module-title">Module 1</h4>
+                <i class="fa-solid fa-file-arrow-down"></i>
+                <i class="fa-solid fa-file-arrow-up"></i>
+              </div>
+              <div class="module-description">
+                This worksheet covers key topics from the lesson on how to
+                fly...
+              </div>
+              <div class="module-trackers">
+                <div class="module-completion">Complete</div>
+                <div class="module-grade">Grade: 40%</div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <script src="member_course_assignments_functions.js"></script>
+  </body>
+</html>
