@@ -96,3 +96,40 @@ document.addEventListener("DOMContentLoaded", function () {
   // Initial display of resources for the first page
   showPage(currentPage);
 });
+
+//Dynamic resource adding for back-end
+
+const books = [
+  {
+    title: "Book 1",
+    file: "book1.pdf",
+    tags: ["Engineering", "Medical"],
+    description: "hdsajdjkashdasjk",
+  },
+  {
+    title: "Book 2",
+    file: "book2.pdf",
+    tags: ["Technology", "Computer science"],
+    description: "sjakdhasdsa",
+  },
+  {
+    title: "Book 3",
+    file: "book3.pdf",
+    tags: ["Arts", "History"],
+    description: "sjakdhasdsa",
+  },
+];
+
+const bookList = document.querySelector(".grid-container");
+
+books.forEach((book) => {
+  let listItem = document.createElement("div");
+  listItem.dataset.tags = book.tags.join(", ");
+  listItem.classList.add("resource");
+  listItem.innerHTML = ` 
+          <h2 id="resource-name">${book.title}</h2>
+          <img id="resource-cover" src="resource_catalogue_images/book-cover-stock-photo.png" alt="Resource Cover">
+          <div id="resource-description"> ${book.title} </div>
+          <div id="resource-tags">${book.tags.join(", ")}</div>`;
+  bookList.appendChild(listItem);
+});
