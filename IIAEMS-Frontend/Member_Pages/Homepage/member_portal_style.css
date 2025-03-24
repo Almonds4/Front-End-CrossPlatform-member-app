@@ -79,6 +79,11 @@
   list-style: none;
 }
 
+.course-link {
+  text-decoration: none;
+  color: black;
+}
+
 #recommended-courses h2 {
   margin: auto;
   padding: 10px;
