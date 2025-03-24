@@ -1,46 +1,9 @@
 /* General Styles */
 body {
-    font-family: Arial, sans-serif;
+
     background-color: #f3f0eb;
 }
 
-/* Navbar */
-.navbar {
-    background-color: #1e4486 !important; /* Dark blue */
-    padding: 20px;
-    display: flex;
-    flex-direction: row; /* Ensure navbar items are aligned horizontally */
-    justify-content: center; /* Center content */
-    align-items: center; /* Vertically center content */
-}
-
-.top-right {
-    position: fixed; /* Fix the top-right content */
-    right: 20px;
-    top: 10px;
-    display: flex;
-    align-items: center;
-}
-
-.top-right .text-white {
-    margin-right: 15px;
-}
-
-.navbar-nav .nav-link {
-    color: white !important;
-    font-weight: bold;
-    margin-right: 10px;
-    transition: color 0.3s ease; /* Smooth transition for hover effect */
-}
-
-.navbar-nav .nav-item:first-child .nav-link {
-    color: orange !important; /* Change the color of Home link to orange */
-  }
-  
-  .navbar-nav .nav-item:first-child .nav-link:hover {
-    color: darkorange !important; /* Change color on hover */
-  }
-  
 
 /* Sidebar */
 .sidebar {
@@ -315,14 +278,14 @@ label {
 }
 
 /* Styling for the unordered list in the columns */
-ul {
+ul:not(.navbar-nav) {
     padding-left: 0; /* Simplified padding */
     list-style-type: none; /* Removes default bullets */
     text-align: left; /* Aligns the list items to the left */
 }
 
 /* List items in the columns */
-li {
+li:not(.nav-item) {
     margin-bottom: 5px;
     font-size: 14px; /* Smaller font size for list items */
 }
