@@ -39,16 +39,15 @@
     <!--all above uniform throughout. Need closing body & HTML tag-->
 
     <!-- course info and modules page-->
+    <h2 style="text-align: center;">Course Edit</h2>
 
-    <div class = "modules_page">
+    <div class = "course_info">
         <div class="Course_name">
             <p>Course Name</p>
         </div>
         <input type="text" class="course_name_field" id="course_name_field" placeholder="change course name">
 
-        <div class = "Course_Code">
-            <p>Course Code</p>
-        </div> 
+        <p class = "Course_Code">Course Code</p>
         <input type="text" class="Course_Code_field" id="Course_Code_field" placeholder="change course code">
 
         <div class="Instructor">
@@ -72,6 +71,25 @@
         <input type="text" class="description_field" id="description_field" placeholder="Description">
 
     </div> 
+    <br>
+
+    <!-- THE MODULES SECTION--> 
+    <h2 style="text-align: center;">Modules Edit</h2>
+    <div class = "modules_info">
+        <p id="module_header">Module Name</p>
+        <input type="text" id="module_name_field">
+        <br>
+        <p id="desc_header">Module Description</p>
+        <input type="text" id="module_desc">
+        <br>
+        <input type="file" id="fileUpload" name="fileUpload">
+        <br>
+        <a href="reference the module's materials" download id="filedownload">Download File</a>
+        <br>
+        <button type="submit" id="next_module">Next Module</button>
+
+    </div>
+    <button type="submit" id="submit">Submit</button>
 
 </body>
 </html>
