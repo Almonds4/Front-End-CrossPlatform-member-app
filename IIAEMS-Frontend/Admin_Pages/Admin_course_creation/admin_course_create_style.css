@@ -1,0 +1,163 @@
+/* Body and General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styling */
+.header-course-creation {
+    background-color: #1F4A89;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 8px;
+    margin: 10px;
+}
+
+/* Container Layout */
+.course-creation-container {
+    display: flex; 
+    gap: 20px; 
+    padding: 20px;
+    justify-content: space-between; 
+    position: relative; 
+    padding-bottom: 60px; 
+}
+
+/* Left and Right Sections */
+.left-section, .right-section {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 48%; 
+    min-height: 400px;
+}
+
+/* Course Form Title */
+.left-section h2, .right-section h2 {
+    color: #1F4A89;
+}
+
+/* Input & Label Styling */
+.course-creation-container label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #4A9972;
+}
+
+/* Inputs & Textareas */
+.course-creation-container input, .course-creation-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+    height: 80px;
+}
+
+/* Module Container Styling */
+#modules-container {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 10px;
+    flex-grow: 1;
+}
+
+/* Module Styling */
+.module {
+    background: #EAEAEA;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Remove Module Button Styling */
+.remove-module {
+    background-color: #FF6F61;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+    align-self: flex-start; 
+}
+
+.remove-module:hover {
+    background-color: #e55a4d; 
+}
+
+.remove-module:focus {
+    outline: none; 
+    box-shadow: 0 0 0 2px #e55a4d; 
+}
+
+/* Add Module Button Styling */
+.add-module-button {
+    background-color: #D1A84A;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    align-self: flex-start; 
+    margin-top: 15px;
+}
+
+.add-module-button:hover {
+    background-color: #b88a3d;
+}
+
+/* Submit Button Styling */
+#submit-course {
+    background-color: #D1A84A; /* Gold from the palette */
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    position: absolute;
+    bottom: 20px; 
+    left: 50%;
+    transform: translateX(-50%); 
+    width: 200px; 
+}
+
+#submit-course:hover {
+    background-color: #b88a3d;
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .course-creation-container {
+        flex-direction: column; 
+    }
+
+    .left-section, .right-section {
+        width: 100%; 
+    }
+
+    #submit-course {
+        width: 100%; /* Make the submit button full width on small screens */
+    }
+}
