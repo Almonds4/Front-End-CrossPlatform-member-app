@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Creation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="admin_course_create_style.css">
+    <link rel="stylesheet" href="../../Member_Pages/navbar-style.css">
+    
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <img class="logo" src="../../assets/images/IIAEMS_NEW_LOGO.png" alt="IIAEMS Logo" width="150">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="../Homepage/member_portal.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../about.html">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../programs.html">Programs</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../resources/resource_catalogue.html">Resources</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../contact.html">Contact Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="../My_Course_List/member_mycourse.html">My Courses</a></li>
+                <li class="nav-item"><a class="nav-link" href="../Network_Hub/network_hub_page.html">Network Hub</a></li>
+                <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
+                <li class="nav-item"><a class="nav-link" href="../Settings_Page/Settings.html">Settings</a></li>
+                  
+              </ul>
+          </div>
+      </div>
+  </nav>
+
+    <header class="header-course-creation">Course Creation</header>
+
+    <form class="course-creation-container">
+        <!-- Course Details -->
+        <section class="left-section">
+            <h2>Course Details</h2>
+            <label for="course-title">Title</label>
+            <input type="text" id="course-title" placeholder="Enter course title">
+
+            <label for="course-description">Description</label>
+            <textarea id="course-description" placeholder="Enter course description"></textarea>
+
+            <label for="course-id">Course ID</label>
+            <input type="text" id="course-id" placeholder="Enter unique course ID">
+
+            <label for="course-price">Price</label>
+            <input type="number" id="course-price" placeholder="Enter price">
+        </section>
+
+        <!-- Course Modules -->
+        <section class="right-section">
+            <h2>Modules</h2>
+            <div id="modules-container"></div>
+            <button type="button" id="add-module" class="add-module-button">+ Add Module</button>
+        </section>
+
+        <button type="submit" id="submit-course">Submit Course</button>
+        
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="admin_course_create_script.js"></script>
+
+</body>
+</html>
