@@ -1,11 +1,10 @@
-/* Body and General Styling */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
 
-/* Header Styling */
 .header-course-creation {
     background-color: #1F4A89;
     color: white;
@@ -17,7 +16,7 @@ body {
     margin: 10px;
 }
 
-/* Container Layout */
+
 .course-creation-container {
     display: flex; 
     gap: 20px; 
@@ -27,7 +26,7 @@ body {
     padding-bottom: 60px; 
 }
 
-/* Left and Right Sections */
+
 .left-section, .right-section {
     background: white;
     padding: 20px;
@@ -37,12 +36,12 @@ body {
     min-height: 400px;
 }
 
-/* Course Form Title */
+
 .left-section h2, .right-section h2 {
     color: #1F4A89;
 }
 
-/* Input & Label Styling */
+
 .course-creation-container label {
     display: block;
     font-weight: bold;
@@ -50,7 +49,7 @@ body {
     color: #4A9972;
 }
 
-/* Inputs & Textareas */
+
 .course-creation-container input, .course-creation-container textarea {
     width: 100%;
     padding: 10px;
@@ -65,7 +64,7 @@ textarea {
     height: 80px;
 }
 
-/* Module Container Styling */
+
 #modules-container {
     max-height: 400px;
     overflow-y: auto;
@@ -73,7 +72,7 @@ textarea {
     flex-grow: 1;
 }
 
-/* Module Styling */
+
 .module {
     background: #EAEAEA;
     padding: 15px;
@@ -84,7 +83,6 @@ textarea {
     gap: 10px;
 }
 
-/* Remove Module Button Styling */
 .remove-module {
     background-color: #FF6F61;
     color: white;
@@ -107,7 +105,7 @@ textarea {
     box-shadow: 0 0 0 2px #e55a4d; 
 }
 
-/* Add Module Button Styling */
+
 .add-module-button {
     background-color: #D1A84A;
     color: white;
@@ -124,9 +122,9 @@ textarea {
     background-color: #b88a3d;
 }
 
-/* Submit Button Styling */
+
 #submit-course {
-    background-color: #D1A84A; /* Gold from the palette */
+    background-color: #D1A84A; 
     color: white;
     border: none;
     padding: 12px 20px;
@@ -147,7 +145,7 @@ textarea {
 
 
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
     .course-creation-container {
         flex-direction: column; 
@@ -158,6 +156,6 @@ textarea {
     }
 
     #submit-course {
-        width: 100%; /* Make the submit button full width on small screens */
+        width: 100%; 
     }
 }

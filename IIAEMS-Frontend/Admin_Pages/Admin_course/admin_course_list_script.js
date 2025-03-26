@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Sample data
     addCourse("Course 1", "Description for course 1", "18.49", "Computer Science");
     addCourse("Course 2", "Description for course 2", "22.99", "Business");
-    addCourse("Course 3", "Description for course 3", "15.00", "Computer Science"); // This will trigger pagination
+    addCourse("Course 3", "Description for course 3", "15.00", "Computer Science"); 
     
     // Initial render
     renderCourses();
