@@ -1,0 +1,153 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+.mailbox-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Left Sidebar (Folders) */
+.folders-sidebar {
+    width: 15%;
+    background: #1f487e;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+.folders-sidebar button {
+    background: #e0a96d;
+    color: black;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.folders-sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.folders-sidebar li {
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.folders-sidebar li.active, 
+.folders-sidebar li:hover {
+    background: #2c5c84;
+}
+
+/* Middle Sidebar (Messages) */
+.messages-sidebar {
+    width: 25%;
+    background: #3b7ea1;
+    color: white;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.messages-sidebar h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.messages-sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.messages-sidebar li {
+    background: white;
+    color: black;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.messages-sidebar li:hover {
+    background: #b0c4de;
+}
+
+/* Right Section (Message View & Compose) */
+.message-content {
+    width: 60%;
+    padding: 20px;
+    background: #fff;
+    box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+#compose-message.hidden {
+    display: none;
+}
+
+/* Compose Message */
+#compose-message {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+}
+
+#compose-message h2 {
+    text-align: center;
+}
+
+#compose-title, #compose-body {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#compose-body {
+    height: 100px;
+}
+
+.compose-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+#close-compose {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: red;
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.compose-buttons button {
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+#save-draft {
+    background: #e0a96d;
+}
+
+#send-message {
+    background: #4caf50;
+    color: white;
+}
