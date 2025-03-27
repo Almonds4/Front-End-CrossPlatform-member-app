@@ -2,6 +2,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login | IIAEMS</title>
@@ -75,6 +77,20 @@
       height: auto;
     }
   </style>
+  <!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    appId: "YOUR_APP_ID"
+  };
+  firebase.initializeApp(firebaseConfig);
+</script>
+
 </head>
 <body>
   <div class="login-wrapper">
@@ -84,7 +100,7 @@
     <div class="form-container">
       <h2 class="text-center">Student Login</h2>
       <p class="text-center subtitle">Welcome back! Please log in to your account.</p>
-      <form>
+      <form id="loginForm">
         <div class="mb-3">
           <label for="email" class="form-label">Email</label>
           <input type="email" class="form-control" id="email" required>
@@ -93,18 +109,112 @@
           <label for="password" class="form-label">Password</label>
           <input type="password" class="form-control" id="password" required>
         </div>
+        <div class="mb-3">
+          <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY_HERE"></div>
+        </div>
+        
         <button type="submit" class="btn btn-primary w-100">Login</button>
         <div class="text-center mt-3">
           <p>Or login with</p>
           <div class="d-flex gap-2">
-            <button type="button" class="btn social-btn w-50">Google</button>
-            <button type="button" class="btn social-btn w-50">Facebook</button>
+            <button type="button" id="googleLogin" class="btn social-btn w-50">Google</button>
+            <button type="button" id="facebookLogin" class="btn social-btn w-50">Facebook</button>
           </div>
+          
         </div>
       </form>
       <p class="text-center mt-4">Don't have an account? <a href="signup.html">Sign Up</a></p>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const auth = firebase.auth();
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  const recaptcha = grecaptcha.getResponse();
+
+  if (recaptcha.length === 0) {
+    alert("Please complete the CAPTCHA.");
+    return;
+  }
+
+  auth.signInWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+
+      if (!user.emailVerified) {
+        alert("Please verify your email before logging in.");
+        return;
+      }
+
+      alert("Login successful! Welcome back, " + user.email);
+      grecaptcha.reset(); // reset CAPTCHA
+      // Redirect or load dashboard here
+    })
+    .catch((error) => {
+      console.error("Login error:", error.message);
+      alert("Login failed: " + error.message);
+    });
+});
+
+  
+    // Email/password login
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+  
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+  
+      auth.signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+  
+          if (!user.emailVerified) {
+            alert("Please verify your email before logging in.");
+            return;
+          }
+  
+          alert("Login successful! Welcome back, " + user.email);
+          // Redirect or load dashboard here
+        })
+        .catch((error) => {
+          console.error("Login error:", error.message);
+          alert("Login failed: " + error.message);
+        });
+    });
+  
+    // Google Login
+    document.getElementById("googleLogin").addEventListener("click", function () {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      auth.signInWithPopup(provider)
+        .then((result) => {
+          alert("Google login successful! Welcome, " + result.user.displayName);
+          // Redirect or load dashboard here
+        })
+        .catch((error) => {
+          console.error("Google login error:", error.message);
+          alert("Google login failed.");
+        });
+    });
+  
+    // Facebook Login
+    document.getElementById("facebookLogin").addEventListener("click", function () {
+      const provider = new firebase.auth.FacebookAuthProvider();
+      auth.signInWithPopup(provider)
+        .then((result) => {
+          alert("Facebook login successful! Welcome, " + result.user.displayName);
+          // Redirect or load dashboard here
+        })
+        .catch((error) => {
+          console.error("Facebook login error:", error.message);
+          alert("Facebook login failed.");
+        });
+    });
+  </script>
+  
+  
 </body>
 </html>
