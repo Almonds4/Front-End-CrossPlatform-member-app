@@ -74,6 +74,66 @@
       height: auto;
     }
   </style>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    appId: "YOUR_APP_ID"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+</script>
+<script>
+  document.getElementById("signupForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    const recaptcha = grecaptcha.getResponse();
+
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+
+    if (!regex.test(password)) {
+      alert("Password must be at least 8 characters and include at least one uppercase letter, one lowercase letter, and one number.");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      alert("Passwords do not match.");
+      return;
+    }
+
+    if (recaptcha.length === 0) {
+      alert("Please complete the CAPTCHA.");
+      return;
+    }
+
+    // Firebase signup
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        return user.sendEmailVerification(); // send confirmation email
+      })
+      .then(() => {
+        alert("Signup successful! A confirmation email has been sent to your address. Please verify it.");
+        document.getElementById("signupForm").reset();
+        grecaptcha.reset();
+      })
+      .catch((error) => {
+        console.error("Signup error:", error.message);
+        alert("Signup failed: " + error.message);
+      });
+  });
+</script>
+
+
 </head>
 <body>
   <div class="signup-wrapper">
@@ -83,35 +143,119 @@
     <div class="form-container">
       <h2 class="text-center">Student Signup</h2>
       <p class="text-center subtitle">Enter your details to create your account</p>
-      <form>
+      <form id="signupForm">
         <div class="mb-3">
           <label for="firstName" class="form-label">First Name</label>
           <input type="text" class="form-control" id="firstName" required>
         </div>
         <div class="mb-3">
-            <label for="firstName" class="form-label">Last Name</label>
-            <input type="text" class="form-control" id="firstName" required>
-          </div>
+          <label for="lastName" class="form-label">Last Name</label>
+          <input type="text" class="form-control" id="lastName" required>
+        </div>
         <div class="mb-3">
           <label for="email" class="form-label">Email</label>
           <input type="email" class="form-control" id="email" required>
         </div>
         <div class="mb-3">
-          <label for="password" class="form-label">Password</label>
+          <label for="password" class="form-label">
+            Password
+            <span 
+              tabindex="0"
+              class="ms-2 text-info" 
+              data-bs-toggle="tooltip" 
+              data-bs-placement="right"
+              title="Password must be at least 8 characters, include 1 uppercase letter, 1 lowercase letter, and 1 number.">
+              &#9432;
+            </span>
+          </label>
           <input type="password" class="form-control" id="password" required>
+        </div>
+        
+        <div class="mb-3">
+          <label for="confirmPassword" class="form-label">Re-enter Password</label>
+          <input type="password" class="form-control" id="confirmPassword" required>
+        </div>
+        <div class="mb-3">
+          <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY_HERE"></div>
         </div>
         <button type="submit" class="btn btn-primary w-100">Sign Up</button>
         <div class="text-center mt-3">
           <p>Or signup with</p>
           <div class="d-flex gap-2">
-            <button type="button" class="btn social-btn w-50">Google</button>
-            <button type="button" class="btn social-btn w-50">Facebook</button>
-          </div>
+            <button type="button" id="googleSignIn" class="btn social-btn w-50">Google</button>
+            <button type="button" id="facebookSignIn" class="btn social-btn w-50">Facebook</button>
+          </div>          
         </div>
       </form>
       <p class="text-center mt-4">Already have an account? <a href="login.html">Sign In</a></p>
     </div>
   </div>
+
+  <script>
+    function validateForm() {
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+      const recaptcha = grecaptcha.getResponse();
+
+      const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+
+      if (!regex.test(password)) {
+        alert("Password must be at least 8 characters and include at least one uppercase letter, one lowercase letter, and one number.");
+        return false;
+      }
+
+      if (password !== confirmPassword) {
+        alert("Passwords do not match.");
+        return false;
+      }
+
+      if (recaptcha.length === 0) {
+        alert("Please complete the CAPTCHA.");
+        return false;
+      }
+
+      return true;
+    }
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+      tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+        new bootstrap.Tooltip(tooltipTriggerEl)
+      });
+    });
+  </script>
+  <script>
+    const auth = firebase.auth();
+  
+    document.getElementById('googleSignIn').addEventListener('click', function () {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      auth.signInWithPopup(provider)
+        .then((result) => {
+          alert("Google login successful! Welcome, " + result.user.displayName);
+          // redirect or store user info as needed
+        })
+        .catch((error) => {
+          console.error("Google sign-in error:", error.message);
+          alert("Google sign-in failed.");
+        });
+    });
+  
+    document.getElementById('facebookSignIn').addEventListener('click', function () {
+      const provider = new firebase.auth.FacebookAuthProvider();
+      auth.signInWithPopup(provider)
+        .then((result) => {
+          alert("Facebook login successful! Welcome, " + result.user.displayName);
+          // redirect or store user info as needed
+        })
+        .catch((error) => {
+          console.error("Facebook sign-in error:", error.message);
+          alert("Facebook sign-in failed.");
+        });
+    });
+  </script>
+  
+  
 </body>
 </html>
