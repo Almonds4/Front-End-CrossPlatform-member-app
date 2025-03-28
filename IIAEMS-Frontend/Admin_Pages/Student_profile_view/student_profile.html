@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="student_profile_style.css">
+    <link rel="stylesheet" href="../../Member_Pages/navbar-style.css"> 
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <img class="logo" src="../../assets/images/IIAEMS_NEW_LOGO.png" alt="IIAEMS Logo" width="150">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                  <li class="nav-item"><a class="nav-link" href="../Homepage/member_portal.html">Home</a></li>
+                  <li class="nav-item"><a class="nav-link" href="../../about.html">About Us</a></li>
+                  <li class="nav-item"><a class="nav-link" href="../../programs.html">Programs</a></li>
+                  <li class="nav-item"><a class="nav-link" href="../../resources/resource_catalogue.html">Resources</a></li>
+                  <li class="nav-item"><a class="nav-link" href="../../contact.html">Contact Us</a></li>
+                  <li class="nav-item"><a class="nav-link" href="../My_Course_List/member_mycourse.html">My Courses</a></li>
+                  <li class="nav-item"><a class="nav-link" href="../Network_Hub/network_hub_page.html">Network Hub</a></li>
+                  <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
+                  <li class="nav-item"><a class="nav-link" href="../Settings_Page/Settings.html">Settings</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-container">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <button id="view-courses">View Courses</button>
+        <button id="view-purchases">View Purchase History</button>
+        <div id="sidebar-content" class="course-list"></div> <!-- Dynamic content -->
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <h1 id="student-name">Student Profile</h1>
+        <div id="main-content">
+            <!-- Content will be updated dynamically -->
+        </div>
+    </div>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="student_profile_script.js"></script> 
+</body>
+</html>
