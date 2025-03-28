@@ -56,9 +56,9 @@
 <body>
     <div class="container-box" id="contentBox">
         <div class="logo-container" id="logo">
-            <img src="assets/images/IIAEMS NEW LOGO.png" alt="IIAEMS Logo" width="150">
+            <img src="/images/logo-english.png" alt="IIAEMS Logo" width="150" id="siteLogo">
         </div>
-        <h1 id="title" class="fade-in">Welcome to IIAEMS</h1>
+        <h1 id="title" class="fade-in">Welcome</h1>
         <p id="subtitle" class="fade-in">Start your journey with IIAEMS</p>
         
         <label class="form-check">
@@ -67,12 +67,6 @@
         </label>
         
         <button id="continueBtn" class="btn btn-custom mt-3" disabled onclick="window.location.href='home.html'">Continue</button>
-        
-        <select id="languageSelect" class="form-select mt-3" onchange="changeLanguage()">
-            <option value="en">English</option>
-            <option value="ar">العربية</option>
-            <option value="fr">Français</option>
-        </select>
     </div>
 
     <!-- Transform Section -->
@@ -83,21 +77,26 @@
         </div>
     </div>
 
-    <!-- Bootstrap JS -->
+    <!-- Bootstrap JS and Geo Localization Script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        function changeLanguage() {
-            let selectedLang = document.getElementById("languageSelect").value;
-            localStorage.setItem("selectedLanguage", selectedLang);
-            applyLanguage(selectedLang);
-        }
+        const middleEastCountries = ['SA', 'AE', 'QA', 'KW', 'OM', 'BH', 'EG', 'JO', 'IQ', 'LB', 'SY', 'YE', 'PS'];
 
-        function applyLanguage(lang) {
-            let direction = lang === "ar" ? "rtl" : "ltr";
-            document.body.style.direction = direction;
-            document.documentElement.lang = lang;
-            document.getElementById("languageSelect").value = lang;
-        }
+        fetch('https://ipapi.co/json/')
+          .then(res => res.json())
+          .then(data => {
+            const countryCode = data.country;
+            if (middleEastCountries.includes(countryCode)) {
+              document.getElementById('siteLogo').src = '/images/logo-arabic.png';
+              document.getElementById('title').innerText = 'مرحبا بك';
+              document.body.setAttribute('dir', 'rtl');
+            } else {
+              document.body.setAttribute('dir', 'ltr');
+            }
+          })
+          .catch(() => {
+            console.log('Geo lookup failed, defaulting to English.');
+          });
 
         document.getElementById('termsCheckbox').addEventListener('change', function() {
             let continueBtn = document.getElementById('continueBtn');
@@ -108,8 +107,6 @@
         });
 
         window.onload = function () {
-            let storedLang = localStorage.getItem("selectedLanguage") || "en";
-            applyLanguage(storedLang);
             document.getElementById('contentBox').classList.add('fade-in');
             document.getElementById('logo').classList.add('fade-in');
             document.getElementById('title').classList.add('fade-in');
