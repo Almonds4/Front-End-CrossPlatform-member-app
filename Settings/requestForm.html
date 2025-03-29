@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Request Form</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Inline CSS for Page -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f4f4f4;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 500px;
+      margin: auto;
+      background: #f3f0eb;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: white; /* Matching text color */
+      background-color: #007BFF; /* Matching button color */
+      padding: 10px;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    label {
+      font-weight: normal;
+    }
+    input, select, textarea {
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background: #007BFF;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .message {
+      margin-top: 10px;
+      padding: 10px;
+      display: none;
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      border-radius: 5px;
+    }
+
+    .goBackBtn {
+      background: #6c757d; /* Grey color for the back button */
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: center;
+      margin-top: 20px;
+      width: 100%;
+    }
+
+    .goBackBtn:hover {
+      background: #5a6268; /* Slightly darker grey on hover */
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Submit a Student Request</h2>
+    <form id="requestForm" method="POST" action="/send-request">
+      <label for="name">Name:</label>
+      <input type="text" class="form-control" id="name" placeholder="Enter your name">
+
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter your email">
+      
+      <label for="requestType">Request Type:</label>
+      <select class="form-select" id="requestType">
+        <option value="Confirmation of Enrollment">Confirmation of Enrollment</option>
+        <option value="Account Statement">Account Statement</option>
+        <option value="Certificate of Completion (Course)">Certificate of Completion (Course)</option>
+        <option value="Certificate of Completion (Program)">Certificate of Completion (Program)</option>
+      </select>
+
+      <label for="comments">Additional Comments:</label>
+      <textarea class="form-control" id="comments" rows="4" placeholder="Optional"></textarea>
+
+      <button type="submit">Submit Request</button>
+      <button id="goBackBtn" class="goBackBtn">Go Back</button>
+      <div id="message" class="message"></div>
+
+    </form>
+
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Handle "Go Back" Button Click First
+      document.getElementById('goBackBtn').addEventListener('click', function(event) {
+        event.preventDefault(); // Stop any form action
+        window.location.href = "Settings.html"; // Redirect to settings page
+      });
+  
+      // Fetch the logged-in student info
+      fetch("/api/getLoggedInUser")  // Replace with your actual API endpoint
+        .then(response => {
+          if (!response.ok) {
+            throw new Error("Failed to fetch user information");
+          }
+          return response.json();  // Parse the response as JSON
+        })
+        .then(student => {
+          // Pre-fill name and email fields with fetched student data
+          document.getElementById("name").value = student.name;
+          document.getElementById("email").value = student.email;
+        })
+        .catch(error => {
+          console.error("Error fetching student info:", error);
+          alert("Unable to fetch logged-in user information.");
+        });
+
+      // Form submission logic
+      document.getElementById("requestForm").addEventListener("submit", async function (event) {
+        event.preventDefault();  // Prevent the form from submitting normally
+
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const requestType = document.getElementById("requestType").value;
+        const comments = document.getElementById("comments").value.trim();
+
+        // Validation
+        if (name === "" || email === "") {
+          alert("Please enter your name and email.");
+          return;
+        }
+
+        // Prepare the data to send in the email template
+        const templateParams = {
+          to_email: "support@iiaems.org", // Recipient email
+          student_name: name,
+          student_email: email,
+          request_type: requestType,
+          comments: comments
+        };
+
+        try {
+          // Send the data to the backend using fetch
+          const response = await fetch('/send-request', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(templateParams)  // Sending templateParams as JSON
+          });
+
+          // Handle the response from the server
+          const result = await response.json();
+          const messageBox = document.getElementById("message");
+          messageBox.style.display = "block";
+          messageBox.textContent = result.message;  // Display the server response message
+
+          // Redirect or close the window after a short delay
+          setTimeout(() => {
+            if (window.opener) {
+              window.close();  // Closes the window if it was opened via script
+            } else {
+              window.location.href = "Settings.html";  // Redirects to a blank page or settings page
+            }
+          }, 1000);
+
+        } catch (error) {
+          console.error('Error:', error);
+          const messageBox = document.getElementById("message");
+          messageBox.style.display = "block";
+          messageBox.textContent = 'Something went wrong. Please try again later.';  // Error message
+        }
+      });
+    });
+
+
+  </script>
+
+</body>
+</html>
