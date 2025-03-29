@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Account Information</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="edit_info_style.css">
+    <link rel="stylesheet" href="../../Member_Pages/navbar-style.css">
+</head>
+<body>
+
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+              <img class="logo" src="../../assets/images/IIAEMS_NEW_LOGO.png" alt="IIAEMS Logo" width="150">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                      <li class="nav-item"><a class="nav-link" href="../../Member_Pages/Homepage/member_portal.html">Home</a></li>
+                      <li class="nav-item"><a class="nav-link" href="../../about.html">About Us</a></li>
+                      <li class="nav-item"><a class="nav-link" href="../../programs.html">Programs</a></li>
+                      <li class="nav-item"><a class="nav-link" href="../../resources/resource_catalogue.html">Resources</a></li>
+                      <li class="nav-item"><a class="nav-link" href="../../contact.html">Contact Us</a></li>
+                      <li class="nav-item"><a class="nav-link" href="../../Member_Pages/My_Course_List/member_mycourse.html">My Courses</a></li>
+                      <li class="nav-item"><a class="nav-link" href="../../Member_Pages/Network_Hub/network_hub_page.html">Network Hub</a></li>
+                      <li class="nav-item"><a class="nav-link" href="../../Member_Pages/Network_Hub/profile.html">Profile</a></li>
+                      <li class="nav-item"><a class="nav-link" href="../../Member_Pages/Settings_Page/Settings.html">Settings</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    <div class="account-container">
+        <form class="account-form" id="accountForm">
+            <div class="account-header">
+                <h1 class="account-title" id="student-account-title">Student Account Information</h1>
+            </div>
+
+            <div class="account-section">
+                <label class="account-label" for="username">Change Username</label>
+                <input type="text" class="account-input" id="username" placeholder="New Name">
+            </div>
+
+            <div class="account-section">
+                <label class="account-label" >Reset Password</label>
+                <button type="button" class="reset-button" id="resetPassword">Reset to Default</button>
+            </div>
+
+            <div class="account-section">
+                <label class="account-label" for="primary-email">Primary Email</label>
+                <input type="email" class="account-input" id="primary-email" placeholder="Email">
+                <label class="account-label" for="recovery-email">Recovery Email</label>
+                <input type="email" class="account-input" id="recovery-email" placeholder="Recovery Email">
+            </div>
+
+            <div class="account-section">
+                <label class="account-label" for="birthday">Birthday</label>
+                <input type="date" class="account-input" id="birthday">
+            </div>
+
+            <div class="account-section">
+                <label class="account-label" for="account-type">Account Type</label>
+                <input type="text" class="account-input" id="account-type">
+                <label class="account-label" for="instructor-of">Instructor of</label>
+                <input type="text" class="account-input" id="instructor-of">
+            </div>
+
+            <div class="account-section">
+                <label class="account-label" for="notes">Notes</label>
+                <textarea class="account-notes" id="notes" placeholder="Account Notes here. Only Tech Support and Administrator can see"></textarea>
+            </div>
+
+            <div class="account-buttons">
+                <button type="submit" class="save-button" id="saveChanges">Save Changes</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="edit_info_script.js"></script>
+</body>
+</html>
