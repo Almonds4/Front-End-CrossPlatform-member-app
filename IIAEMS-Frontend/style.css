@@ -776,3 +776,25 @@ h2 {
     grid-template-columns: 1fr;
   }
 }
+
+.course-image {
+  height: 150px; /* or whatever height you want */
+  overflow: hidden;
+}
+
+.course-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* this will maintain aspect ratio while covering the area */
+}
+
+.program-image {
+  height: 200px;
+  overflow: hidden;
+}
+
+.program-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* this will maintain aspect ratio while covering the area */
+}
