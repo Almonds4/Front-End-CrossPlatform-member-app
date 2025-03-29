@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Tagged Students</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        /* Navbar */
+.navbar {
+    flex: flex;
+    background-color: #1e4486 !important; /* Dark blue */
+    padding: 20px;
+    display: flex;
+    flex-direction: column; /* Ensure navbar items are aligned horizontally */
+    justify-content: center; /* Center content */
+    align-items: center; /* Vertically center content */
+}
+
+.top-right {
+    position: absolute; 
+    right: 20px;
+    top: 30px;
+    display: flex;
+    align-items: center;
+    gap: 15px;  /* Adjust this value to control the space between the icons */
+}
+
+.top-right i {
+    font-size: 24px;  /* Adjust this value to resize your icons */
+}
+
+.logout {
+    background-color: #b3dcc2; /* Light Green */
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px
+    
+}
+
+.logout:hover {
+    background-color: #a0c9af; /* Darker Green on hover */
+}
+
+.navbar-nav .nav-link {
+    color: white !important;
+    font-weight: bold;
+    margin-right: 10px;
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.navbar-nav .nav-item:first-child .nav-link {
+    color: orange !important; /* Change the color of Home link to orange */
+}
+
+.navbar-nav .nav-item:first-child .nav-link:hover {
+    color: darkorange !important; /* Change color on hover */
+}
+
+
+        /* Align Filter by Tag Elements */
+        .controls {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 20px; /* Adds 20px space between elements */
+            margin-bottom: 20px; /* Adds space below the controls section */
+            margin-left: 60px;
+            margin-top: 40px;
+        }
+
+        .controls label {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .controls input {
+            padding: 5px;
+            width: 250px; /* Adjust width as needed */
+        }
+
+        .controls button {
+            padding: 5px 15px;
+            background-color: #1e4486;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .controls button:hover {
+            background-color: darkblue;
+        }
+        #student-ID {
+            margin-left: 60px; /* Sets the left margin to 60px */
+            padding: 5px; /* Optional: Ensures consistent padding */
+            width: 250px; /* Optional: Adjusts the width of the input field */
+        }
+
+
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f0eb;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #1e4486;
+            margin-left: 60px;
+            margin-top: 10px;
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 20px 0;
+            margin-left: 60px;
+            color: #333;
+        }
+
+/* Align Total Tagged Elements */
+.total-tagged {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align elements to the left */
+    gap: 20px; /* Add space between the label and input box */
+    margin-left: 60px; /* Indent slightly from the edge */
+    margin-bottom: 20px; /* Add space below the section */
+}
+
+.tagged-count-box {
+    border: 0.8px solid black;
+
+    padding: 10px;
+    background-color: #f9f9f9;
+    font-size: 16px;
+    width: 180px; /* Adjust width if needed */
+    height: 50px;
+    margin-top: 20px;
+}
+
+/* Align Student ID Section */
+#student-ID {
+    margin-left: 20px; /* Matches alignment with the rest */
+    padding: 5px; 
+    width: 250px; /* Ensures consistent width */
+}
+
+label[for="student-ID"] {
+    margin-left: 60px; /* Aligns label to the left */
+    font-weight: bold; /* Optional: Enhances the label's visibility */
+}
+
+        /* Table */
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            margin-bottom: 400px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #1e4486;
+            color: white;
+        }
+
+        /* Buttons */
+        .logout {
+            background-color: #b3dcc2;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 20px auto;
+            display: block;
+        }
+
+        .logout:hover {
+            background-color: #a0c9af;
+        }
+
+    /* Footer */
+    /* Bottom Container Styled Like Footer */
+    .bottom-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        background-color: #1e4486; /* Footer color */
+        padding: 20px;
+        color: white; /* Footer text color */
+    }
+
+    /* Left Section */
+    .left-side {
+        width: 50%;
+    }
+
+    .main-text,
+    .secondary-text {
+        font-size: 14px;
+        color: white;
+        margin-bottom: 10px;
+    }
+
+    .circles {
+        display: flex;
+        margin-top: 10px;
+    }
+
+    .circle {
+        width: 15px;
+        height: 15px;
+        background-color: #FEF9F0;
+        border-radius: 50%;
+        margin-right: 5px;
+    }
+
+    /* Right Section */
+    .right-side {
+        display: flex;
+        width: 40%;
+        justify-content: space-between;
+    }
+
+    /* Column Styling */
+    .column {
+        width: 30%;
+    }
+
+    .column-title {
+        font-weight: bold;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .right-side ul {
+        padding-left: 0;
+        list-style-type: none;
+    }
+
+    .right-side li {
+        margin-bottom: 5px;
+        font-size: 14px;
+    }
+
+    /* Footer */
+    .footer-container {
+        text-align: center;
+        background-color: #1e4486;
+        color: white;
+        padding: 10px;
+    }
+
+    .footer-text {
+        font-size: 14px;
+    }
+
+
+    </style>
+</head>
+<body>
+      <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg bg-dark">
+    <div class="container-fluid">
+      <img src="https://raw.githubusercontent.com/Almonds4/Front-End-CrossPlatform-member-app/main/IIAEMS-Frontend/assets/images/IIAEMS_NEW_LOGO.png" alt="IIAEMS Logo" width="150" class="navbar-logo" style="background-color: white; padding: 10px; border-radius: 5px;">
+      
+      <!-- Top-right content (name, envelope, and user icon) -->
+      <div class="top-right">
+        <span id="studentName" class="text-white fw-bold me-3">Loading...</span>
+        <button class="logout">Logout</button>
+      </div>
+
+      <!-- Navbar items -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link text-white" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="https://github.com/Almonds4/Front-End-CrossPlatform-member-app/blob/main/IIAEMS-Frontend/index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#">About Us</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#">Courses</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#">Store</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#">Resources</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#">Programs</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+    <h1>Tagged Students</h1>
+
+    <!-- Filters -->
+    <div class="controls">
+        <label for="filter">Filter by Tag:</label>
+        <input type="text" id="filter" placeholder="Enter tag name">
+        <button onclick="filterByTag()">Filter</button>
+    </div>
+
+    <div class="controls">
+        <label for="status-filter">Show:</label>
+        <select id="status-filter" onchange="filterByStatus()">
+            <option value="all">All</option>
+            <option value="active">Active</option> 
+            <option value="inactive">Inactive</option>
+        </select>
+    </div>
+
+    <!-- Add Tag -->
+    <h2>Add Tag to Student</h2>
+    <label for="student-ID">Student ID:</label>
+    <input type="text" id="student-ID" placeholder="Enter Student ID" style="margin-left: 60px; padding: 10px; width: 250px;">    
+    <label for="student-tag">Tag:</label>
+    <input type="text" id="student-tag" placeholder="Enter tag">
+    <button onclick="addTag()">Add Tag</button>
+
+    <!-- Total Tagged Counter -->
+    <div class="total-tagged">
+        <label>Total Tagged:</label>
+        <div id="tagged-count" class="tagged-count-box">0</div>
+    </div>
+
+    <!-- Student Table -->
+    <table id="student-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Tags</th>
+                <th>Status</th>
+                <th>Program</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Rows will be inserted dynamically -->
+        </tbody>
+    </table>
+
+    <script>
+        const students = [
+            { id: "101", firstName: "Alice", lastName: "Smith", email: "alice@example.com", tags: ["Transcriptionist"], alumni: false, program: "Computer Science" },
+            { id: "102", firstName: "Bob", lastName: "Johnson", email: "bob@example.com", tags: ["Transcriptionist"], alumni: true, program: null },
+            { id: "103", firstName: "Charlie", lastName: "Brown", email: "charlie@example.com", tags: ["Sports"], alumni: false, program: "Mechanical Engineering" }
+        ];
+
+        let filteredResults = students;
+
+        function displayStudents(filteredStudents = students) {
+            const tableBody = document.querySelector("#student-table tbody");
+            const taggedCount = document.getElementById("tagged-count");
+            tableBody.innerHTML = "";
+            let totalTagged = 0;
+
+            filteredStudents.forEach(student => {
+                if (student.tags.length > 0) totalTagged++;
+                const status = student.alumni ? "Inactive" : "Active";
+                const programInfo = student.alumni ? "N/A" : student.program;
+                const tags = student.tags.map(tag => `<span class="tag">${tag}</span>`).join("");
+
+                tableBody.innerHTML += `
+                    <tr>
+                        <td>${student.id}</td>
+                        <td>${student.firstName}</td>
+                        <td>${student.lastName}</td>
+                        <td>${student.email}</td>
+                        <td>${tags}</td>
+                        <td>${status}</td>
+                        <td>${programInfo}</td>
+                    </tr>
+                `;
+            });
+
+            taggedCount.textContent = totalTagged;
+        }
+
+        function filterByTag() {
+            const tag = document.getElementById("filter").value;
+            filteredResults = students.filter(student => student.tags.includes(tag));
+            displayStudents(filteredResults);
+        }
+
+        function filterByStatus() {
+            filteredResults = students.filter(student => 
+                document.getElementById("status-filter").value === "all" || 
+                student.alumni === (document.getElementById("status-filter").value === "inactive")
+            );
+            displayStudents(filteredResults);
+        }
+
+        displayStudents();
+
+        // Logout function
+        function logout() {
+            window.history.back();  // Go back to the previous page in the browser history
+
+        }
+
+    </script>
+
+<div class="bottom-container">
+    <div class="left-side">
+      <p class="main-text">Institute of Education for Engineering,<br> Medicine, and Science</p>
+      <p class="secondary-text">Empowering learners worldwide with quality<br> education and innovative resources.</p>
+      <div class="circles">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+      </div>
+    </div>
+  
+    <div class="right-side">
+      <div class="column col-12 col-md-4">
+        <p class="column-title">Support</p>
+        <ul>
+          <li>Help Center</li>
+          <li>FAQs</li>
+          <li>Technical Support</li>
+          <li>Contact Us</li>
+        </ul>
+      </div>
+      <div class="column col-12 col-md-4">
+        <p class="column-title">Quick Links</p>
+        <ul>
+          <li>About Us</li>
+          <li>Courses</li>
+          <li>Store</li>
+          <li>Resources</li>
+          <li>Programs</li>
+        </ul>
+      </div>
+      <div class="column col-12 col-md-4">
+        <p class="column-title">Legal</p>
+        <ul>
+          <li>Terms of Service</li>
+          <li>Privacy Policy</li>
+          <li>Cookie Policy</li>
+          <li>Accessibility</li>
+          <li>Security</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-container">
+    <p class="footer-text">© 2025 IIAEMS. All rights reserved.</p>
+  </div>
+  
+
+
+
+</body>
+</html>
