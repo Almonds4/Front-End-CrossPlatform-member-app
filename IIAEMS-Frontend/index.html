@@ -18,6 +18,10 @@
             opacity: 0;
             transform: translateY(50px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centers the content horizontally */
+            justify-content: center; /* Centers the content vertically */
         }
         .btn-custom { 
             width: 100%; 
@@ -33,7 +37,6 @@
             box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
         }
         h1, p, .logo-container { 
-            opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
@@ -41,29 +44,39 @@
             opacity: 1 !important;
             transform: translateY(0) !important;
         }
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .form-check {
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Centers checkbox and text within label */
+        }
+        .form-check-input {
+            margin-right: 5px; /* Reduced space between the checkbox and the text */
+        }
+        #title {
+        font-size: 30px; /* Adjust this value as needed */
+        }
+        h6 {
+            margin-top: 20px; /* Ensures space above each heading */
+            margin-bottom: 10px; /* Space below each heading before the paragraph */
+            font-weight: normal;
+        }
+        p {
+            margin-bottom: 20px; /* Ensures space below each paragraph before the next heading */
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
     <div class="container-box" id="contentBox">
         <div class="logo-container" id="logo">
-            <img src="assets/images/IIAEMS_NEW_LOGO.png" alt="IIAEMS Logo" width="150" id="siteLogo">
+            <img src="assets/images/IIAEMS_NEW_LOGO.png" alt="IIAEMS Logo" width="450" id="siteLogo">
         </div>
         <h1 id="title" class="fade-in">Welcome</h1>
         <p id="subtitle" class="fade-in">Start your journey with IIAEMS</p>
         
-        <label class="form-check">
-            <input class="form-check-input" type="checkbox" id="termsCheckbox"> 
-            <span id="termsText">I agree to the Terms of Use</span>
+        <label class="form-check" style="justify-content: center;">
+            <input class="form-check-input" type="checkbox" id="termsCheckbox" style="margin-right: 5px;">
+            <a href="#" id="termsLink" data-bs-toggle="modal" data-bs-target="#termsModal">I agree to the Terms of Use</a>
         </label>
         
         <button id="continueBtn" class="btn btn-custom mt-3" disabled onclick="window.location.href='home.html'">Continue</button>
@@ -77,7 +90,52 @@
         </div>
     </div>
 
-    <!-- Bootstrap JS and Geo Localization Script -->
+    <!-- Terms of Service Modal -->
+    <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="termsModalLabel">Terms of Service</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>Last Updated: March 20, 2025</h6>
+                    <p>Welcome to IIAEMS (International Institute for Advancing Engineering, Medicine & Science)! These Terms of Service ("Terms") govern your access to and use of the IIAEMS website, including all content, courses, programs, and related services (collectively, the "Services") provided by IIAEMS, a non-profit organization registered in Ontario, Canada. By accessing or using the Services, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use the Services.</p>
+                    <p>1. Acceptance of Terms</h6>
+                    <h6>By using the Services, you represent that you are at least 14 years old and have the legal capacity to enter into a binding agreement. If you are accessing or using the Services on behalf of a company, organization, or other entity, you represent that you have the authority to bind that entity to these Terms.</p>
+                    <p>2. Non-Profit Status and Mission</h6>
+                    <h6>IIAEMS is a non-profit organization dedicated to advancing education in engineering, medicine, and science. Our mission is to provide accessible and high-quality educational resources to learners worldwide. While we strive to offer valuable content, please understand that our primary goal is educational and not commercial profit.</p>
+                    <p>3. Use of Services</h6>
+                    <h6>The Services grant you a limited, non-exclusive, non-transferable, revocable license to access and use the Services for your personal, non-commercial educational purposes, subject to these Terms. You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account. You agree not to use the Services for any unlawful or prohibited purpose.</p>
+                    <p>4. Educational Content</h6>
+                    <h6>The content provided through the Services is for educational purposes only and should not be considered professional advice. You should consult with a qualified professional for any specific advice or guidance. All content provided through the Services, including but not limited to text, graphics, images, videos, and software, is the property of IIAEMS or its licensors and is protected by copyright and other intellectual property laws.</p>
+                    <p>5. Courses and Programs</h6>
+                    <h6>Enrollment in courses and programs may be subject to specific requirements and fees. IIAEMS reserves the right to modify, suspend, or terminate any course or program at any time without notice.</p>
+                    <p>6. User Content</h6>
+                    <h6>You are solely responsible for any content you submit or post through the Services and grant IIAEMS a non-exclusive, royalty-free license to use such content in connection with the Services.</p>
+                    <p>7. Donations and Financial Support</h6>
+                    <h6>As a non-profit organization, IIAEMS relies on donations and financial support. All donations are gratefully accepted and used to support our mission.</p>
+                    <p>8. Disclaimer of Warranties</h6>
+                    <h6>THE SERVICES ARE PROVIDED "AS IS" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESSED OR IMPLIED.</p>
+                    <p>9. Limitation of Liability</h6>
+                    <h6>IIAEMS will not be liable for any indirect, incidental, special, consequential, or punitive damages arising out of or in connection with your use of the Services.</p>
+                    <p>10. Indemnification</h6>
+                    <h6>You agree to indemnify and hold IIAEMS harmless from any claims arising from your use of the Services.</p>
+                    <p>11. Governing Law and Jurisdiction</h6>
+                    <h6>These Terms shall be governed by the laws of Ontario, Canada. Any disputes will be handled in the courts of Ontario.</p>
+                    <p>12. Changes to Terms</h6>
+                    <h6>IIAEMS reserves the right to modify these Terms at any time. Your continued use of the Services after any changes constitutes your acceptance of the new Terms.</p>
+                    <p>13. Contact Us</h6>
+                    <h6>If you have any questions about these Terms, please contact us at help@iiaems.org.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         const middleEastCountries = ['SA', 'AE', 'QA', 'KW', 'OM', 'BH', 'EG', 'JO', 'IQ', 'LB', 'SY', 'YE', 'PS'];
@@ -87,7 +145,7 @@
           .then(data => {
             const countryCode = data.country;
             if (middleEastCountries.includes(countryCode)) {
-              document.getElementById('siteLogo').src = 'assets/images/IIAEMS_ARABIC.png';
+              document.getElementById('siteLogo').src = '/images/logo-arabic.png';
               document.getElementById('title').innerText = 'مرحبا بك';
               document.body.setAttribute('dir', 'rtl');
             } else {
