@@ -119,7 +119,7 @@
   font-size: 3.25em;
 }
 
-#volunteer p {
+#volunteer p:not(.tab-pane) {
   font-size: 1.5em;
   margin-bottom: 20px;
 }
@@ -130,20 +130,50 @@
   height: fit-content;
   padding: 20px;
   gap: 15px;
+}
+
+.nav-tab-container {
   display: flex;
+  justify-content: center; /* Ensures tabs stay centered */
 }
 
-.container > .btn > img {
-  width: 35px;
-  height: 25px;
+
+.nav-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* Adds spacing between tabs */
+  border-bottom: none; /* Optional: remove default bootstrap underline */
 }
 
-.container > .btn {
+.nav-tabs .nav-link img {
+  max-width: 40px;
+  max-height: 40px;
+  height: auto;
+  width: auto;
+
+}
+
+.nav-tabs .nav-link {
+  display: flex;
+  gap: 10px;
+  align-content: center;
+  justify-content: center;
   background-color: #dcb38b;
-  border: 1px solid #dcb38b;
-  transition: 0.3s ease-in-out;
+  color: white;
+
 }
 
-.container > .btn:hover {
-  transform: scale(1.05);
+.nav-tabs .nav-link.active {
+  background-color: #b5dccb;
+
+}
+
+.tab-pane p {
+  font-size: 16px !important;
+  text-align: left !important;
+  margin: 0px !important;
+}
+
+.tab-content {
+  min-height: 300px; /* Adjust based on content size */
 }

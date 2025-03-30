@@ -17,8 +17,9 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link href="member_portal_style.css" rel="stylesheet" />
     <link href="../navbar-style.css" rel="stylesheet">
+    <link href="member_portal_style.css" rel="stylesheet" />
+    
   </head>
   <body>
     <!-- Navbar -->
@@ -37,7 +38,7 @@
                 <li class="nav-item"><a class="nav-link" href="../../contact.html">Contact Us</a></li>
                 <li class="nav-item"><a class="nav-link" href="../My_Course_List/member_mycourse.html">My Courses</a></li>
                 <li class="nav-item"><a class="nav-link" href="../Network_Hub/network_hub_page.html">Network Hub</a></li>
-                <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
+                <li class="nav-item"><a class="nav-link" href="../Network_Hub/profile.html">Profile</a></li>
                 <li class="nav-item"><a class="nav-link" href="../Settings_Page/Settings.html">Settings</a></li>
                   
               </ul>
@@ -211,21 +212,50 @@
         education accessible for all!
       </p>
       <div class="container">
-        <a class="btn btn-primary" href="#" role="button"
-          >Volunteer <img src="member_portal_images/volunteer_icon.png" />
-        </a>
-        <a class="btn btn-primary" href="#" role="button"
-          >Donate
-          <i class="fa-solid fa-hand-holding-dollar" style="color: #000000"></i
-        ></a>
-        <a class="btn btn-primary" href="#" role="button"
-          >Sponsor us
-          <i class="fa-solid fa-handshake" style="color: #000000"></i
-        ></a>
-        <a class="btn btn-primary" href="#" role="button"
-          >Success Stories
-          <i class="fa-solid fa-medal" style="color: #050505"></i
-        ></a>
+
+        <nav class="nav-tab-container">
+          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <button class="nav-link active" id="nav-volunteer-tab" data-bs-toggle="tab" data-bs-target="#nav-volunteer" type="button" role="tab" aria-controls="nav-volunteer" aria-selected="true">Volunteer <img src="member_portal_images/volunteer_icon.png"></button>
+            <button class="nav-link" id="nav-donate-tab" data-bs-toggle="tab" data-bs-target="#nav-donate" type="button" role="tab" aria-controls="nav-donate" aria-selected="false">Donate<i class="fa-solid fa-hand-holding-dollar" style="color: #000000"></i></button>
+            <button class="nav-link" id="nav-sponsor-tab" data-bs-toggle="tab" data-bs-target="#nav-sponsor" type="button" role="tab" aria-controls="nav-sponsor" aria-selected="false">Sponsor us<i class="fa-solid fa-handshake" style="color: #000000"></i></button>
+            <button class="nav-link" id="nav-success-tab" data-bs-toggle="tab" data-bs-target="#nav-success" type="button" role="tab" aria-controls="nav-sucess" aria-selected="false">Success Stories<i class="fa-solid fa-medal" style="color: #050505"></i></button>
+          </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="nav-volunteer" role="tabpanel" aria-labelledby="nav-volunteer-tab"> 
+            <strong>Join Us as a Volunteer</strong>
+            <p>Education thrives with the support of passionate individuals like you!<br><br>  
+            By <strong>volunteering with us</strong>, you contribute to creating a more engaging and accessible learning experience for students worldwide.  
+            Whether it’s assisting with <strong>course development, mentoring learners,</strong> or <strong>helping with community outreach</strong>,  
+            your time and skills can make a real impact.</p>  
+            <p><strong>Join our mission</strong> to empower education—become a volunteer today and help shape a brighter future for learners everywhere!</p>
+            <p>Email example@iiaems.org for details</p>
+          </div>
+          <div class="tab-pane fade" id="nav-donate" role="tabpanel" aria-labelledby="nav-donate-tab">
+           <strong>Support Our Mission</strong>
+            <p>Your donations play a vital role in enhancing the <strong>quality</strong> and <strong>accessibility</strong> of our educational programs.<br><br>  
+            Every contribution helps us <strong>develop better course materials, improve our platform,</strong> and provide valuable learning resources to more students.<br><br>  
+            With your support, we can continue to offer <strong>engaging, high-quality education</strong> that empowers learners to achieve their goals.</p>  
+        
+            <p><strong>Join us in making a difference</strong>—every donation brings us one step closer to a brighter future for all!</p>
+          <a href="#">Click here to Donate!</a></div>
+
+          <div class="tab-pane fade" id="nav-sponsor" role="tabpanel" aria-labelledby="nav-sponsor-tab">
+            <strong>Partner With Us</strong>
+    <p>We believe in the power of collaboration to create lasting educational impact. By <strong>sponsoring our programs</strong>, your company can help us expand access to <strong>high-quality learning</strong> while gaining meaningful visibility and engagement within our growing community.<br><br>  
+    Your support allows us to <strong>develop new courses, provide scholarships,</strong> and enhance our learning platform to better serve students worldwide.</p>  
+    <p><strong>Join us as a sponsor</strong> and make a difference in education while showcasing your commitment to lifelong learning and social impact.</p>
+    <p>Email example@iiaems.org for details</p>
+          </div>
+          <div class="tab-pane fade" id="nav-success" role="tabpanel" aria-labelledby="nav-sucess-tab">
+            <strong>Our Students' Success Stories</strong>
+    <p>We take pride in the achievements of our students! Many have gone on to <strong>advance their careers, continue higher education,</strong> and apply their knowledge in meaningful ways.<br><br>  
+    Their dedication, combined with our commitment to quality education, has led to countless success stories that inspire us every day.</p>  
+
+    <p><strong>Want to see the impact?</strong> <a href="../../home.html"><strong>Click here</strong></a> to read about some of our outstanding students and their journeys.</p>
+          </div>
+        </div>
+
       </div>
     </section>
 
