@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paypal Buy Now Button</title>
+  <script src="https://www.paypal.com/sdk/js?client-id=EO57EJqkOqC5eCa5lJwRGXFle8UqXS_0zlmZuPNmwlZxbsd-HJNPm0i9SBFZHXfFquH9Jpu6D_k_m853"></script> <!-- Replace with your PayPal Client ID -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+    .container {
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .course {
+      margin: 20px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: #fff;
+      text-align: center;
+    }
+    .course h3 {
+      margin-bottom: 10px;
+      font-size: 1.2em;
+    }
+    .course p {
+      margin-bottom: 10px;
+      font-size: 1.1em;
+    }
+    #paypal-button-container {
+      margin-top: 20px;
+    }
+
+    /* Media Queries for Responsive Design */
+    @media (max-width: 768px) {
+      .course {
+        width: calc(50% - 20px); /* 2 products per row on smaller screens */
+      }
+    }
+
+    @media (max-width: 480px) {
+      .course {
+        width: 100%; /* 1 product per row on very small screens */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Buy Now</h1>
+    <div id="courses-container">
+      <!-- PayPal buttons will be dynamically injected here -->
+    </div>
+  </div>
+
+  <script>
+    // Fetch courses from the server
+    fetch('/api/courses')
+      .then((response) => response.json())
+      .then((courses) => {
+        const coursesContainer = document.getElementById('courses-container');
+
+        // Loop through courses and create PayPal buttons for each product
+        courses.forEach(course => {
+          // Create a div for each product (course)
+          const productDiv = document.createElement('div');
+          productDiv.classList.add('course');
+          productDiv.innerHTML = `
+            <h3>${course.name}</h3>
+            <p>Price: $${course.price}</p>
+            <div id="paypal-button-container-${course.id}" class="paypal-button-container"></div> <!-- PayPal Button for this course -->
+          `;
+
+          // Append the product div to the container
+          coursesContainer.appendChild(productDiv);
+
+          // Render PayPal button for this course
+          window.paypal.Buttons({
+            style: {
+              shape: 'rect',
+              layout: 'vertical',
+              color: 'gold',
+              label: 'paypal',
+            },
+            async createOrder(data, actions) {
+              try {
+                // Create an order on your server when the user clicks "Buy Now"
+                const response = await fetch('/api/orders', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({
+                    courseId: course.id,
+                    courseName: course.name,
+                    price: course.price,
+                  }),
+                });
+
+                const orderData = await response.json();
+                if (orderData.id) {
+                  return orderData.id; // Return the order ID to PayPal
+                }
+
+                throw new Error('Failed to create order');
+              } catch (error) {
+                console.error('Error creating order:', error);
+                return;
+              }
+            },
+            async onApprove(data, actions) {
+              try {
+                // Capture the payment on your server after approval
+                const response = await fetch(`/api/orders/${data.orderID}/capture`, {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                });
+
+                const orderData = await response.json();
+
+                // Handle successful transaction
+                if (orderData?.purchase_units) {
+                  const transaction = orderData.purchase_units[0].payments.captures[0];
+                  alert(`Transaction completed: ${transaction.id}`);
+                }
+              } catch (error) {
+                console.error('Error processing payment:', error);
+              }
+            },
+          }).render(`#paypal-button-container-${course.id}`); // Render the button for each course
+        });
+      })
+      .catch((error) => {
+        console.error('Error fetching courses:', error);
+      });
+  </script>
+</body>
+</html>
