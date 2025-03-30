@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const dropdowns = document.querySelectorAll(".dropdown");
 
+
   dropdowns.forEach((dropdown) => {
     // Collecting all the relative elements
     const select = dropdown.querySelector(".select");
@@ -14,9 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Menu open and close functionality
     select.addEventListener("click", () => {
       select.classList.toggle("select-clicked");
-
       caret.classList.toggle("caret-rotate");
-
       menu.classList.toggle("menu-open");
     });
 
@@ -24,11 +23,8 @@ document.addEventListener("DOMContentLoaded", function () {
     options.forEach((option) => {
       option.addEventListener("click", () => {
         selected.innerText = option.innerText;
-
         select.classList.remove("select-clicked");
-
         caret.classList.remove("caret-rotate");
-
         menu.classList.remove("menu-open");
 
         options.forEach((option) => {
@@ -36,9 +32,47 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         option.classList.add("active");
+
+        // FILTER FUNCTIONALITY 
+        const activeFilter = option.innerText.toLowerCase();
+        filterResources(activeFilter, searchInput.value.toLowerCase());
       });
     });
+
+    // SEARCH FUNCTIONALITY 
+    const searchInput = document.querySelector(".search");
+
+    searchInput.addEventListener("input", () => {
+      const activeFilter = selected.innerText.toLowerCase();
+      filterResources(activeFilter, searchInput.value.toLowerCase());
+    });
+
+    function filterResources(activeFilter, searchTerm) {
+      const resources = document.querySelectorAll(".resource");
+    
+      resources.forEach((resource) => {
+        const title = resource.querySelector("#resource-name").innerText.toLowerCase();
+        const tags = resource.dataset.tags.toLowerCase();
+    
+        if (
+          (activeFilter === "none" || activeFilter === "" || activeFilter === "all" || !activeFilter) &&
+          title.includes(searchTerm)
+        ) {
+          resource.style.display = "block";
+        } else if (tags.includes(activeFilter) && title.includes(searchTerm)) {
+          resource.style.display = "block";
+        } else {
+          resource.style.display = "none";
+        }
+      });
+    
+      paginate();
+    }
+    
   });
+
+  //Applies No filter and no search on page load
+  filterResources("none", "");
 
   // Pagination Logic
   const resources = document.querySelectorAll(".resource"); // Get all resource items
@@ -52,36 +86,40 @@ document.addEventListener("DOMContentLoaded", function () {
   let currentPage = 1; // Current page
 
   // Function to display the resources for the current page
-  function showPage(page) {
-    const start = (page - 1) * itemsPerPage;
-    const end = start + itemsPerPage;
+  function paginate() {
+    let visibleResources = [...resources].filter(
+      (resource) => resource.style.display === "block"
+    );
+
+    let totalPages = Math.ceil(visibleResources.length / itemsPerPage);
+    currentPage = Math.min(currentPage, totalPages) || 1;
 
     // Hide all resources first
     resources.forEach((resource) => (resource.style.display = "none"));
 
     // Show only the resources for the current page
-    for (let i = start; i < end && i < resources.length; i++) {
-      resources[i].style.display = "block";
-    }
+    visibleResources
+      .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
+      .forEach((resource) => (resource.style.display = "block"));
 
     // Update page number display
-    pageNumberDisplay.textContent = `Page ${page}`;
+    pageNumberDisplay.textContent = `Page ${currentPage}`;
 
     // Update total pages display
     totalPagesDisplay.textContent = `of ${totalPages}`;
 
     // Disable Previous button on first page
-    prevBtn.disabled = page === 1;
+    prevBtn.disabled = currentPage === 1;
 
     // Disable Next button on last page
-    nextBtn.disabled = page === totalPages;
+    nextBtn.disabled = currentPage === totalPages;
   }
 
   // Add event listener for "Previous" button
   prevBtn.addEventListener("click", () => {
     if (currentPage > 1) {
       currentPage--;
-      showPage(currentPage);
+      paginate();
     }
   });
 
@@ -89,15 +127,15 @@ document.addEventListener("DOMContentLoaded", function () {
   nextBtn.addEventListener("click", () => {
     if (currentPage < totalPages) {
       currentPage++;
-      showPage(currentPage);
+      paginate();
     }
   });
 
   // Initial display of resources for the first page
-  showPage(currentPage);
+  paginate();
 });
 
-//Dynamic resource adding for back-end
+// Dynamic resource adding for back-end
 
 const books = [
   {
