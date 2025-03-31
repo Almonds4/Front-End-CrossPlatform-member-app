@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirmation of Enrollment</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
+            text-align: center;
         }
         .navbar {
             display: flex;
@@ -26,6 +28,7 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
         }
         table {
             width: 100%;
@@ -43,10 +46,18 @@
         .error-message {
             color: red;
         }
+        .btn {
+            margin-top: 20px;
+            padding: 10px 15px;
+            background: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
     </style>
 </head>
-<body>
-    
+
+<body> 
     <div class="enrollment-report">
         <div class="navbar">
             <img src="https://raw.githubusercontent.com/Almonds4/Front-End-CrossPlatform-member-app/main/IIAEMS-Frontend/assets/images/IIAEMS_NEW_LOGO.png" alt="IIAEMS Logo" width="150" class="navbar-logo" style="background-color: white; padding: 10px; border-radius: 5px;">
@@ -70,6 +81,10 @@
             </tr>
             <tbody id="enrollmentTable"></tbody>
         </table>
+
+        <!-- Buttons -->
+        <button class="btn" onclick="printReport()">Print Report</button>
+        <button class="btn" onclick="downloadPDF()">Download as PDF</button>
     </div>
 
     <script>
@@ -117,6 +132,57 @@
             } catch (error) {
                 errorMessage.innerText = "An error occurred while fetching data. Please try again later.";
             }
+        }
+
+        function printReport() {
+            const printContent = document.querySelector('.enrollment-report').innerHTML;
+            const newWindow = window.open('', '', 'height=600,width=800');
+            newWindow.document.write(`
+                <html>
+                    <head>
+                        <title>Enrollment Report</title>
+                        <style>
+                            body { font-family: Arial, sans-serif; padding: 20px; text-align: left; }
+                            table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+                            th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+                            th { background-color: #f4f4f4; }
+                        </style>
+                    </head>
+                    <body>
+                        ${printContent}
+                    </body>
+                </html>
+            `);
+            newWindow.document.close();
+            newWindow.onload = () => {
+                newWindow.focus();
+                newWindow.print();
+                newWindow.close();
+            };
+        }
+
+        function downloadPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            doc.text("Confirmation of Enrollment", 20, 20);
+            doc.text(`Student Name: ${document.getElementById('studentName').textContent}`, 20, 30);
+            doc.text(`Student ID: ${document.getElementById('studentID').textContent}`, 20, 40);
+            doc.text(`Report Date: ${document.getElementById('reportDate').textContent}`, 20, 50);
+
+            let yPos = 60;
+            doc.text("Courses:", 20, yPos);
+            yPos += 10;
+
+            document.querySelectorAll('table tr').forEach((row) => {
+                let rowText = "";
+                row.querySelectorAll('td, th').forEach(cell => {
+                    rowText += cell.textContent + "\t";
+                });
+                doc.text(rowText, 20, yPos);
+                yPos += 10;
+            });
+
+            doc.save("enrollment_report.pdf");
         }
     </script>
 </body>

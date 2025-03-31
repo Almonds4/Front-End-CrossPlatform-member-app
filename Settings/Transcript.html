@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Official Student Transcript</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .container { width: 60%; margin: auto; padding: 20px; border: 2px solid black; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid black; padding: 10px; text-align: center; }
+        .btn { margin-top: 20px; padding: 10px 15px; background: blue; color: white; border: none; cursor: pointer; }
+        .header { font-size: 20px; font-weight: bold; }
+        .footer { margin-top: 30px; font-size: 14px; }
+        .form-group { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://raw.githubusercontent.com/Almonds4/Front-End-CrossPlatform-member-app/main/IIAEMS-Frontend/assets/images/IIAEMS_NEW_LOGO.png" alt="IIAEMS Logo" width="150" class="navbar-logo" style="background-color: white; padding: 10px; border-radius: 5px;">
+        <p class="header">OFFICIAL STUDENT TRANSCRIPT</p>
+        <p><strong>Institution:</strong> International Institute for Advancing Engineering, Medicine & Science (IIAEMS) </p>
+        <p><strong>Issue Date:</strong> <span id="issueDate"></span></p>
+        <hr>
+        <p><strong>Student ID:</strong> <span id="studentId"></span></p>
+        <p><strong>Full Name:</strong> <span id="studentName"></span></p>
+        <p><strong>Date of Birth:</strong> <span id="dob"></span></p>
+        <p><strong>Department:</strong> <span id="department"></span></p>
+        <p><strong>GPA:</strong> <span id="gpa"></span></p>
+        <div id="transcript"></div>
+
+        <!-- Buttons -->
+        <button class="btn" onclick="printTranscript()">Print Transcript</button>
+        <button class="btn" onclick="downloadPDF()">Download as PDF</button>
+
+        <!-- Email Form -->
+        <div class="form-group">
+            <label for="email">Email Transcript to:</label>
+            <input type="email" id="email" placeholder="Enter email address">
+            <button class="btn" onclick="emailTranscript()">Email Transcript</button>
+        </div>
+
+        <div class="footer">
+            <p><strong>Signature:</strong> ______________________</p>
+            <p><strong>Registrar:</strong> IIAEMS University</p>
+        </div>
+    </div>
+    
+    <script>
+        // Fetch student transcript data dynamically
+        async function fetchTranscript() {
+            document.getElementById('issueDate').textContent = new Date().toLocaleDateString();
+            const urlParams = new URLSearchParams(window.location.search);
+            const studentId = urlParams.get('studentId');
+            
+            if (!studentId) {
+                alert('No Student ID provided');
+                return;
+            }
+            
+            document.getElementById('studentId').textContent = studentId;
+            
+            try {
+                const response = await fetch(`/api/getStudentTranscript?studentId=${studentId}`);
+                const data = await response.json();
+                displayTranscript(data);
+            } catch (error) {
+                console.error('Error fetching transcript:', error);
+                alert('Error fetching transcript');
+            }
+        }
+        
+        function displayTranscript(data) {
+            if (!data || !data.courses || data.courses.length === 0) {
+                document.getElementById('transcript').innerHTML = '<p>No transcript found</p>';
+                return;
+            }
+            
+            document.getElementById('studentName').textContent = data.name;
+            document.getElementById('dob').textContent = data.dob;
+            document.getElementById('department').textContent = data.department;
+            document.getElementById('gpa').textContent = data.gpa;
+            
+            let table = `<table><tr><th>Course</th><th>Marks</th><th>Grade</th><th>Credit Hours</th><th>Semester</th></tr>`;
+            data.courses.forEach(course => {
+                table += `<tr><td>${course.courseName}</td><td>${course.marks}</td><td>${course.grade}</td><td>${course.creditHours}</td><td>${course.semester}</td></tr>`;
+            });
+            table += `</table>`;
+            document.getElementById('transcript').innerHTML = table;
+        }
+
+        // Print the transcript
+        function printTranscript() {
+            const printContent = document.querySelector('.container').innerHTML;
+            const newWindow = window.open('', '', 'height=600,width=800');
+            newWindow.document.write('<html><head><title>Student Transcript</title></head><body>');
+            newWindow.document.write(printContent);
+            newWindow.document.write('</body></html>');
+            newWindow.document.close();
+            newWindow.print();
+        }
+
+        // Download PDF of the transcript
+        function downloadPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            doc.text("OFFICIAL STUDENT TRANSCRIPT", 20, 20);
+            doc.text("Institution: IIAEMS University", 20, 30);
+            doc.text(`Issue Date: ${document.getElementById('issueDate').textContent}`, 20, 40);
+            doc.text(`Student ID: ${document.getElementById('studentId').textContent}`, 20, 50);
+            doc.text(`Full Name: ${document.getElementById('studentName').textContent}`, 20, 60);
+            doc.text(`Date of Birth: ${document.getElementById('dob').textContent}`, 20, 70);
+            doc.text(`Department: ${document.getElementById('department').textContent}`, 20, 80);
+            doc.text(`GPA: ${document.getElementById('gpa').textContent}`, 20, 90);
+            
+            let yPos = 100;
+            doc.text("Courses:", 20, yPos);
+            yPos += 10;
+            
+            document.querySelectorAll('table tr').forEach((row) => {
+                let rowText = "";
+                row.querySelectorAll('td, th').forEach(cell => {
+                    rowText += cell.textContent + "\t";
+                });
+                doc.text(rowText, 20, yPos);
+                yPos += 10;
+            });
+            
+            doc.text("Signature: ______________________", 20, yPos + 20);
+            doc.text("Registrar: IIAEMS", 20, yPos + 30);
+            
+            doc.save("transcript.pdf");
+        }
+
+        // Email Transcript to a specified email
+        async function emailTranscript() {
+            const email = document.getElementById('email').value;
+            if (!email) {
+                alert("Please provide an email address.");
+                return;
+            }
+
+            // Collect data for email (you may customize the email content here)
+            const studentId = document.getElementById('studentId').textContent;
+            const studentName = document.getElementById('studentName').textContent;
+            const issueDate = document.getElementById('issueDate').textContent;
+            const dob = document.getElementById('dob').textContent;
+            const department = document.getElementById('department').textContent;
+            const gpa = document.getElementById('gpa').textContent;
+            const courses = [];
+            
+            document.querySelectorAll('table tr').forEach((row) => {
+                const cells = row.querySelectorAll('td');
+                if (cells.length > 0) {
+                    courses.push({
+                        courseName: cells[0].textContent,
+                        marks: cells[1].textContent,
+                        grade: cells[2].textContent,
+                        creditHours: cells[3].textContent,
+                        semester: cells[4].textContent
+                    });
+                }
+            });
+
+            const transcriptData = { studentId, studentName, issueDate, dob, department, gpa, courses };
+
+            // Send the email data to the backend
+            try {
+                const response = await fetch('/send-transcript', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, transcriptData }),
+                });
+
+                if (response.ok) {
+                    alert("Transcript has been emailed to " + email);
+                } else {
+                    alert("Error sending transcript.");
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                alert("An error occurred while sending the email.");
+            }
+        }
+
+        window.onload = fetchTranscript;
+    </script>
+</body>
+</html>
