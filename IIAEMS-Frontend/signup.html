@@ -233,18 +233,19 @@
   <script>
     const auth = firebase.auth();
   
-    document.getElementById('googleSignIn').addEventListener('click', function () {
-      const provider = new firebase.auth.GoogleAuthProvider();
-      auth.signInWithPopup(provider)
-        .then((result) => {
-          alert("Google login successful! Welcome, " + result.user.displayName);
-          // redirect or store user info as needed
-        })
-        .catch((error) => {
-          console.error("Google sign-in error:", error.message);
-          alert("Google sign-in failed.");
-        });
+    document.getElementById("googleLogin").addEventListener("click", function () {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  firebase.auth().signInWithPopup(provider)
+    .then(result => {
+      console.log("✅ Signed in:", result.user);
+      alert("Google sign-in successful");
+    })
+    .catch(error => {
+      console.error("❌ Google sign-in error:", error.code, error.message);
+      alert("Google sign-in failed: " + error.message);
     });
+});
+
   
     document.getElementById('facebookSignIn').addEventListener('click', function () {
       const provider = new firebase.auth.FacebookAuthProvider();
