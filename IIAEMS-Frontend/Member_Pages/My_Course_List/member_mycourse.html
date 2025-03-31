@@ -49,54 +49,44 @@
     <main class="main-container">
         <section class="left-container">
             <h3>My Courses</h3>
-            <div>
-                <p>Language</p>
-                <div>
-                <input type="radio" class="radio-input" id="english" value="english">
-                <label for="english"> English </label>
-            </div>
-            <div>
-                <input type="radio" class="radio-input" id="Arabic" value="Arabic">
-                <label for="Arabic"> Arabic </label>
-            </div>
-        </div>
         <div>
-            <p>Status</p>
-            <div>
-            <input type="radio" class="radio-input" id="complete" value="complete">
+          <p>Status</p>
+          <div>
+            <input type="radio" class="radio-input" name="status" id="complete" value="complete">
             <label for="complete"> Complete </label>
-        </div>
-        <div>
-            <input type="radio" class="radio-input" id="incomplete" value="incomplete">
+          </div>
+          <div>
+            <input type="radio" class="radio-input" name="status" id="incomplete" value="incomplete">
             <label for="incomplete"> Incomplete </label>
+          </div>
         </div>
-    </div>
         </section>
         <section class="right-container">
              <!-- SEARCH BAR -->
         <div style="display: flex; gap: 10px; padding: 10px;">
-      <input class="search" type="text" />
+          <input class="search" type="text" />
 
-      <!-- DROPDOWN MENU -->
-      <div class="dropdown">
-        <div class="select">
-          <span class="selected">Medical</span>
-          <div class="caret"><i class="fa-solid fa-caret-left" style="color: #ffffff;"></i></i></div>
-        </div>
-        <ul class="menu">
-          <li class="active-filter">Medical</li>
-          <li>Technology and Engineering</li>
-          <li>Arts</li>
-          <li>Language Studies</li>
-          <li>Architecture</li>
-        </ul>
-      </div>
+          <!-- DROPDOWN MENU -->
+          <div class="dropdown">
+            <div class="select">
+              <span class="selected">None</span>
+              <div class="caret"><i class="fa-solid fa-caret-left" style="color: #ffffff;"></i></i></div>
+            </div>
+            <ul class="menu">
+              <li>None</li>
+              <li>Medical</li>
+              <li>Technology and Engineering</li>
+              <li>Arts</li>
+              <li>Language Studies</li>
+              <li>Architecture</li>
+            </ul>
+          </div>
     </div>
 
     <!-- COURSE LIST -->
 
     <div class="course-list">
-        <div class="course">
+        <div data-tags="" class="course">
             <div class="course-img">
                 <img alt="Course Cover Image" src="member_portal_images/volunteer_icon.png">
             </div>

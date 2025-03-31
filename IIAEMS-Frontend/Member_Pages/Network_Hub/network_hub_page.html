@@ -67,27 +67,6 @@
       </div>
     </section>
 
-    <!-- SEARCH BAR -->
-    <section id="search-bar">
-      
-      <input class="search" placeholder="Search" type="text" />
-
-      <!-- DROPDOWN MENU -->
-      <div class="dropdown">
-        <div class="select">
-          <span class="selected">Medical</span>
-          <div class="caret"><i class="fa-solid fa-caret-left" style="color: #ffffff;"></i></i></div>
-        </div>
-        <ul class="menu">
-          <li class="active-filter">Medical</li>
-          <li>Technology and Engineering</li>
-          <li>Arts</li>
-          <li>Language Studies</li>
-          <li>Architecture</li>
-        </ul>
-      </div>
-    </section>
-
     <!-- POST LIST -->
     <section id="post-list">
       <div class="post">
@@ -118,6 +97,25 @@
       </div>
     </section>
     
+<!-- Lightbox for Creating a Post -->
+<div id="post-lightbox">
+  <div class="lightbox-content">
+    <div class="lightbox-header">
+      <h2>Create a Post</h2>
+      <span class="close-lightbox">&times;</span>
+    </div>
+    <form id="post-form">
+      <input type="text" id="post-title" placeholder="Post Title" required>
+      <input type="text" id="post-username" placeholder="Your Name" required>
+      <input type="text" id="post-tags" placeholder="Tags (comma-separated)" required>
+      <textarea id="post-description" placeholder="Post Description" required></textarea>
+      <input type="file" id="post-image" accept="image/*">
+      <button type="submit">Post</button>
+    </form>
+  </div>
+</div>
+
+
     <!-- Bootstrap JS -->
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

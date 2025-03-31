@@ -173,3 +173,88 @@ html {
   color: white;
   border: solid 2px #20498773;
 }
+
+/* Lightbox Background */
+#post-lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Lightbox Active State */
+#post-lightbox.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Lightbox Content */
+.lightbox-content {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  width: 400px;
+  text-align: center;
+}
+
+/* Lightbox Header */
+.lightbox-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #004080;
+  padding-bottom: 10px;
+}
+
+.lightbox-header h2 {
+  color: #004080;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.close-lightbox {
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #ff6600;
+}
+
+/* Form Fields */
+.lightbox-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.lightbox-content input,
+.lightbox-content textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.lightbox-content button {
+  background: #004080;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+
+.lightbox-content button:hover {
+  background: #ff6600;
+}

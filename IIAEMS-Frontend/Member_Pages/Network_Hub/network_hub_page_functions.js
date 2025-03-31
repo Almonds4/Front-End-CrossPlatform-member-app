@@ -1,67 +1,105 @@
-const dropdowns = document.querySelectorAll(".dropdown");
+document.addEventListener("DOMContentLoaded", function () {
+  const createPostBtn = document.querySelector(".btn-primary[href='#']");
+  const postList = document.getElementById("post-list");
+  const lightbox = document.getElementById("post-lightbox");
+  const closeBtn = document.querySelector(".close-lightbox");
+  const postForm = document.getElementById("post-form");
 
-dropdowns.forEach((dropdown) => {
-  //Collecting all the relative elements
-  const select = dropdown.querySelector(".select");
-  const caret = dropdown.querySelector(".caret");
-  const menu = dropdown.querySelector(".menu");
-  const options = dropdown.querySelectorAll(".menu li");
-  const selected = dropdown.querySelector(".selected");
-
-  //Menu open and close functionality
-  select.addEventListener("click", () => {
-    select.classList.toggle("select-clicked");
-
-    caret.classList.toggle("caret-rotate");
-
-    menu.classList.toggle("menu-open");
+  // Open the lightbox when "Create a Post" is clicked
+  createPostBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    lightbox.classList.add("show");
   });
 
-  //Select functionality
-  options.forEach((option) => {
-    option.addEventListener("click", () => {
-      selected.innerText = option.innerText;
-
-      select.classList.remove("select-clicked");
-
-      caret.classList.remove("caret-rotate");
-
-      menu.classList.remove("menu-open");
-
-      options.forEach((option) => {
-        option.classList.remove("active");
-      });
-
-      option.classList.add("active");
-    });
+  // Close the lightbox
+  closeBtn.addEventListener("click", function () {
+    lightbox.classList.remove("show");
   });
-});
 
-const posts = document.querySelectorAll(".post");
+  // Handle form submission
+  postForm.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-posts.forEach((post) => {
-  const content = post.querySelector(".post-content");
+    // Get form values
+    const title = document.getElementById("post-title").value;
+    const username = document.getElementById("post-username").value;
+    const tags = document.getElementById("post-tags").value;
+    const description = document.getElementById("post-description").value;
+    const image = document.getElementById("post-image").files[0];
 
-  //Allows post to be expanded to see content
-  post.addEventListener("click", function () {
-    //If post clicked is already active -> closes post
-    if (this.classList.contains("active-post")) {
-      this.classList.remove("active-post", "post-open");
+    // Generate a random post ID
+    const postId = "post-" + Math.floor(Math.random() * 100000);
+
+    // Create post element
+    const postElement = document.createElement("div");
+    postElement.classList.add("post");
+    postElement.setAttribute("data-post-id", postId);
+
+    let imageHTML = "";
+    if (image) {
+      const imageUrl = URL.createObjectURL(image);
+      imageHTML = `<img src="${imageUrl}" alt="Post Image">`;
+    }
+
+    postElement.innerHTML = `
+      <h3>${title}</h3>
+      <p>Posted by: ${username}</p>
+      <p>Tags: ${tags}</p>
+      <div class="post-content">
+        <p>${description}</p>
+        ${imageHTML}
+      </div>
+      <div class="post-btns">
+        <button><i class="fa-solid fa-envelope"></i></button>
+        <button><i class="fa-solid fa-flag"></i></button>
+      </div>
+    `;
+
+
+
+    // Append post to post list
+    postList.appendChild(postElement);
+
+    // Clear the form
+    postForm.reset();
+
+    // Close the lightbox
+    lightbox.classList.remove("show");
+  });
+
+
+  postList.addEventListener("click", function (event) {
+    const clickedPost = event.target.closest(".post"); // Find the closest post that was clicked
+  
+    if (!clickedPost) return; // If the click was outside a post, do nothing
+  
+    const content = clickedPost.querySelector(".post-content");
+  
+    // If the clicked post is already active -> close it
+    if (clickedPost.classList.contains("active-post")) {
+      clickedPost.classList.remove("active-post", "post-open");
       content.style.height = "0";
       content.style.opacity = "0";
       return;
     }
-
-    //Removes active setting from other post when opening new post
-    posts.forEach((p) => {
-      p.classList.remove("active-post", "post-open");
-      p.querySelector(".post-content").style.height = "0";
-      p.querySelector(".post-content").style.opacity = "0";
+  
+    // Remove 'active-post' from all other posts
+    document.querySelectorAll(".post").forEach((p) => {
+      if (p !== clickedPost) {
+        p.classList.remove("active-post", "post-open");
+        p.querySelector(".post-content").style.height = "0";
+        p.querySelector(".post-content").style.opacity = "0";
+      }
     });
-
-    //Adds active
-    this.classList.add("active-post", "post-open");
+  
+    // Activate the clicked post
+    clickedPost.classList.add("active-post", "post-open");
     content.style.height = content.scrollHeight + "px";
     content.style.opacity = "1";
   });
+  
+
 });
+
+
+
