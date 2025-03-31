@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation of Enrollment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4;
+            padding: 10px;
+        }
+        .navbar img {
+            height: 50px;
+        }
+        .enrollment-report {
+            width: 60%;
+            margin: auto;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .error-message {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="enrollment-report">
+        <div class="navbar">
+            <img src="https://raw.githubusercontent.com/Almonds4/Front-End-CrossPlatform-member-app/main/IIAEMS-Frontend/assets/images/IIAEMS_NEW_LOGO.png" alt="IIAEMS Logo" width="150" class="navbar-logo" style="background-color: white; padding: 10px; border-radius: 5px;">
+        </div>
+        <h3>Confirmation of Enrollment</h3>
+        <label for="studentId">Enter Student ID:</label>
+        <input type="text" id="studentId" />
+        <button onclick="generateEnrollmentReport()">Generate Report</button>
+        <p id="errorMessage" class="error-message"></p>
+        
+        <p><strong>Student Name:</strong> <span id="studentName"></span></p>
+        <p><strong>Student ID:</strong> <span id="studentID"></span></p>
+        <p><strong>Report Date:</strong> <span id="reportDate"></span></p>
+        
+        <table>
+            <tr>
+                <th>Course</th>
+                <th>Course Code</th>
+                <th>Enrollment Status</th>
+                <th>Enrollment Date</th>
+            </tr>
+            <tbody id="enrollmentTable"></tbody>
+        </table>
+    </div>
+
+    <script>
+        document.getElementById("studentId").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                generateEnrollmentReport();
+            }
+        });
+
+        async function generateEnrollmentReport() {
+            const studentId = document.getElementById("studentId").value;
+            const errorMessage = document.getElementById("errorMessage");
+            errorMessage.innerText = "";
+
+            if (!studentId) {
+                errorMessage.innerText = "Please enter a Student ID";
+                return;
+            }
+
+            try {
+                const response = await fetch(`backend.php?studentId=${studentId}`);
+                const data = await response.json();
+
+                if (!data || !data.id) {
+                    errorMessage.innerText = "Student ID not found. Please check and try again.";
+                    return;
+                }
+
+                document.getElementById("studentName").innerText = data.name;
+                document.getElementById("studentID").innerText = data.id;
+                document.getElementById("reportDate").innerText = new Date().toLocaleDateString();
+
+                let tableBody = document.getElementById("enrollmentTable");
+                tableBody.innerHTML = "";
+                
+                data.courses.forEach(course => {
+                    let row = `<tr>
+                        <td>${course.name}</td>
+                        <td>${course.code}</td>
+                        <td>${course.status}</td>
+                        <td>${course.enrollmentDate}</td>
+                    </tr>`;
+                    tableBody.innerHTML += row;
+                });
+            } catch (error) {
+                errorMessage.innerText = "An error occurred while fetching data. Please try again later.";
+            }
+        }
+    </script>
+</body>
+</html>

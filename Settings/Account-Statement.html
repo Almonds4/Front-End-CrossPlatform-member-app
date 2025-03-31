@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Statement</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4;
+            padding: 10px;
+        }
+        .navbar img {
+            height: 50px;
+        }
+        .statement {
+            width: 60%;
+            margin: auto;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .error-message {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="statement">
+        <div class="navbar">
+            <img src="https://raw.githubusercontent.com/Almonds4/Front-End-CrossPlatform-member-app/main/IIAEMS-Frontend/assets/images/IIAEMS_NEW_LOGO.png" alt="IIAEMS Logo" width="150" class="navbar-logo" style="background-color: white; padding: 10px; border-radius: 5px;">
+        </div>
+        <h3>Account Statement</h3>
+        <label for="studentId">Enter Student ID:</label>
+        <input type="text" id="studentId" />
+        <button onclick="fetchStatement()">Generate Statement</button>
+        <p id="errorMessage" class="error-message"></p>
+        
+        <p><strong>Student Name:</strong> <span id="studentName"></span></p>
+        <p><strong>Student ID:</strong> <span id="studentID"></span></p>
+        <p><strong>Statement Date:</strong> <span id="statementDate"></span></p>
+        
+        <table>
+            <tr>
+                <th>Course</th>
+                <th>Course Code</th>
+                <th>Amount Paid</th>
+                <th>Payment Date</th>
+            </tr>
+            <tbody id="statementTable"></tbody>
+        </table>
+    </div>
+
+    <!-- Add the JavaScript at the bottom of the HTML before the closing </body> tag -->
+    <script>
+        document.getElementById("studentId").addEventListener("keypress", function(event) {
+            // Check if Enter key (key code 13) is pressed
+            if (event.key === "Enter") {
+                fetchStatement();  // Call the fetchStatement function when Enter is pressed
+            }
+        });
+
+        async function fetchStatement() {
+            const studentId = document.getElementById("studentId").value;
+            const errorMessage = document.getElementById("errorMessage");
+            errorMessage.innerText = "";
+
+            if (!studentId) {
+                errorMessage.innerText = "Please enter a Student ID";
+                return;
+            }
+
+            try {
+                const response = await fetch(`backend.php?studentId=${studentId}`);
+                const data = await response.json();
+
+                if (!data || !data.id) {
+                    errorMessage.innerText = "Student ID not found. Please check and try again.";
+                    return;
+                }
+
+                document.getElementById("studentName").innerText = data.name;
+                document.getElementById("studentID").innerText = data.id;
+                document.getElementById("statementDate").innerText = new Date().toLocaleDateString();
+
+                let tableBody = document.getElementById("statementTable");
+                tableBody.innerHTML = "";
+                let total = 0;
+
+                data.courses.forEach(course => {
+                    let row = `<tr>
+                        <td>${course.name}</td>
+                        <td>${course.code}</td>
+                        <td>$${course.amount}</td>
+                        <td>${course.date}</td>
+                    </tr>`;
+                    tableBody.innerHTML += row;
+                    total += parseFloat(course.amount);
+                });
+
+                let totalRow = `<tr>
+                    <th colspan="2">Total Paid</th>
+                    <th colspan="2">$${total}</th>
+                </tr>`;
+                tableBody.innerHTML += totalRow;
+            } catch (error) {
+                errorMessage.innerText = "An error occurred while fetching data. Please try again later.";
+            }
+        }
+    </script>
+</body>
+</html>
